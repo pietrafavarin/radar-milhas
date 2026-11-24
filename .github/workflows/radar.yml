@@ -2,10 +2,10 @@ name: Radar de Milhas
 
 on:
   schedule:
-    # 7h, 12h e 19h no horário de Brasília (UTC-3)
-    - cron: "0 10 * * *"
-    - cron: "0 15 * * *"
-    - cron: "0 22 * * *"
+    # a cada 2 horas, das 6h às 22h no horário de Brasília (UTC-3).
+    # O feed do Melhores Destinos só mostra os 10 posts mais recentes, então rodar com frequência evita perder ofertas.
+    - cron: "0 9-23/2 * * *"
+    - cron: "0 1 * * *"
   workflow_dispatch:   # botão "Run workflow" para rodar na hora
 
 permissions:

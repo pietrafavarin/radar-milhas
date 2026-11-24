@@ -175,7 +175,29 @@ def build(posts: dict, agora: datetime | None = None) -> dict:
                         bonus_ativo[k] = {"bonus_pct": t["bonus_pct"], "valido_ate": t.get("valido_ate"),
                                           "link": t["link"], "titulo": t["titulo"]}
 
+    # ---------- custo do milheiro (compra de milhas/pontos) ----------
+    milheiro = {}
+    janela_cpm = agora - timedelta(days=90)
+    com_cpm = [p for p in todos if p.get("cpm") and _dt(p["publicado"]) >= janela_cpm]
+    for prog in sorted({p["cpm_programa"] for p in com_cpm}):
+        lista = sorted([p for p in com_cpm if p["cpm_programa"] == prog], key=lambda p: p["publicado"], reverse=True)
+        livres = [p["cpm"] for p in lista if not p["cpm_requer"]]
+
+        def resumo(p):
+            return {"cpm": p["cpm"], "titulo": p["titulo"], "link": p["link"], "publicado": p["publicado"],
+                    "valido_ate": p.get("valido_ate"), "requer": p["cpm_requer"]}
+
+        ativos = [resumo(p) for p in lista if transfer_ativa(p, agora)]
+        milheiro[prog] = {
+            "tipico": round(statistics.median(livres), 2) if livres else None,
+            "menor": min(livres) if livres else None,
+            "n": len(livres),
+            "ativos": sorted(ativos, key=lambda a: a["cpm"]),
+            "recentes": [resumo(p) for p in lista[:6]],
+        }
+
     return {
+        "milheiro": milheiro,
         "stats_pais": stats("pais"),
         "stats_regiao": stats("regiao"),
         "bonus_usual": bonus_usual,

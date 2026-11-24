@@ -57,6 +57,44 @@ class Passagens(unittest.TestCase):
         self.assertEqual(r["destino"], "SSA")
 
 
+class MesesDeViagem(unittest.TestCase):
+    def test_intervalo(self):
+        from radar.parser import months_mentioned
+        self.assertEqual(months_mentioned("poucas datas disponiveis entre os meses de marco e maio de 2027"), [3, 4, 5])
+        self.assertEqual(months_mentioned("datas entre marco e maio de 2027"), [3, 4, 5])
+        self.assertEqual(months_mentioned("voos de novembro a fevereiro"), [1, 2, 11, 12])
+        self.assertEqual(months_mentioned("voos entre o rio de janeiro (gig) e milao"), [])
+
+    def test_prazo_nao_e_viagem(self):
+        from radar.parser import months_mentioned
+        self.assertEqual(months_mentioned("promocao valida ate 30 de novembro para voos em junho"), [6])
+        self.assertEqual(months_mentioned("ate dezembro"), [])
+
+    def test_abreviado(self):
+        from radar.parser import months_mentioned
+        self.assertEqual(months_mentioned("datas em jun/27 e jul/27"), [6, 7])
+
+
+class PeriodoComAno(unittest.TestCase):
+    def per(self, txt):
+        from radar.parser import periodo_viagem
+        return periodo_viagem(txt, datetime(2026, 11, 13, tzinfo=BRT))
+
+    def test_frases_reais(self):
+        self.assertEqual(self.per("O menor preço é para viajar em junho de 2027, por 16.800 pontos ida e volta."), ["2027-06"])
+        self.assertEqual(self.per("com datas para viajar principalmente em agosto de 2027 ."), ["2027-08"])
+        self.assertEqual(self.per("São oportunidades para viajar entre novembro de 2026 e setembro de 2027 ."),
+                         ["2026-11", "2026-12"] + [f"2027-{m:02d}" for m in range(1, 10)])
+        self.assertEqual(self.per("bons preços saindo de Brasília e do Rio de Janeiro, para viajar entre fevereiro e março de 2027."),
+                         ["2027-02", "2027-03"])
+
+    def test_prazo_da_promocao_nao_conta(self):
+        self.assertEqual(self.per("A campanha é válida para contas abertas até às 23h59 de 6 de janeiro de 2027."), [])
+
+    def test_sem_datas(self):
+        self.assertEqual(self.per("Encontramos disponibilidade entre o Rio de Janeiro (GIG) e Milão (MXP)."), [])
+
+
 class Transferencias(unittest.TestCase):
     def test_livelo_latam(self):
         r = p("LATAM FRIDAY! Ganhe 27% de bônus nas transferências de pontos Livelo",

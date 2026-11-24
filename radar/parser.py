@@ -200,11 +200,69 @@ def _choose_price(title: str, desc: str):
 _MES_ABREV = {m[:3]: i for m, i in _MONTHS.items()}
 
 
+_MES_RX = "(" + "|".join(_MONTHS) + ")"
+
+
 def months_mentioned(text_n: str):
-    """Meses de viagem citados no texto ("junho", "jun/27", "entre maio e julho")."""
-    found = {_MONTHS[m] for m in re.findall(r"\b(" + "|".join(_MONTHS) + r")\b", text_n)}
-    found |= {_MES_ABREV[m] for m in re.findall(r"\b(" + "|".join(_MES_ABREV) + r")\s*/\s*\d{2}", text_n)}
+    """Meses de VIAGEM citados no texto ("junho", "jun/27", "entre março e maio de 2027").
+
+    Ignora prazos de promoção ("até 30 de novembro", "válida até dezembro") e expande intervalos.
+    """
+    t = re.sub(r"\b(ate|valid[ao]s?\s+ate|termina|encerra|vence)\s+(o\s+(proximo\s+)?dia\s+|dia\s+)?(\d{1,2}\s+de\s+)?" + _MES_RX, " ", text_n)
+    t = re.sub(r"\b(publicad[oa]|atualizad[oa])\s+em\s+\d{1,2}\s+de\s+" + _MES_RX, " ", t)
+    t = t.replace("rio de janeiro", "rio")
+    found = set()
+    for a, b in re.findall(r"\b(?:entre|de)\s+(?:os\s+meses\s+de\s+)?" + _MES_RX + r"(?:\s+de\s+\d{4})?\s+(?:e|a|ate)\s+" + _MES_RX, t):
+        i, j = _MONTHS[a], _MONTHS[b]
+        k = i
+        while True:
+            found.add(k)
+            if k == j or len(found) > 12:
+                break
+            k = k % 12 + 1
+    found |= {_MONTHS[m] for m in re.findall(r"\b" + _MES_RX + r"\b", t)}
+    found |= {_MES_ABREV[m] for m in re.findall(r"\b(" + "|".join(_MES_ABREV) + r")\s*/\s*\d{2}\b", t)}
     return sorted(found)
+
+
+_JANELA_VIAGEM = re.compile(r"\b(viajar|viagens?|voar|voos?\s+em|datas?|embarques?|periodo|disponibilidade|disponivel|ida\s+em|partindo\s+em)\b[^.;!?]{0,220}")
+_MES_ANO = re.compile(r"\b" + _MES_RX + r"(?:\s+(?:de|del)\s+(20\d\d))?\b|\b(" + "|".join(_MES_ABREV) + r")\s*/\s*(\d{2})\b")
+
+
+def periodo_viagem(text: str, pub: datetime):
+    """Meses de viagem com ano ("2027-06") citados perto de "viajar", "datas", "disponibilidade"…"""
+    n = norm(text).replace("rio de janeiro", "rio")
+    n = re.sub(r"\b(ate|valid[ao]s?\s+ate|termina|encerra|vence)\s+(as\s+23h59\s+de\s+)?(o\s+(proximo\s+)?dia\s+|dia\s+)?(\d{1,2}o?\s+de\s+)?" + _MES_RX + r"(\s+de\s+20\d\d)?", " ", n)
+    pub_ym = pub.year * 12 + pub.month - 1
+    out = set()
+    for w in _JANELA_VIAGEM.finditer(n):
+        trecho = w.group()
+        marcas = []  # (posição, índice_mes 1-12, ano ou None)
+        for m in _MES_ANO.finditer(trecho):
+            if m.group(1):
+                marcas.append([m.start(), _MONTHS[m.group(1)], int(m.group(2)) if m.group(2) else None])
+            else:
+                marcas.append([m.start(), _MES_ABREV[m.group(3)], 2000 + int(m.group(4))])
+        if not marcas:
+            continue
+        # ano faltando: herda o próximo ano citado no trecho ("entre março e maio de 2027"), senão o mais próximo no futuro
+        for i, mk in enumerate(marcas):
+            if mk[2] is None:
+                prox = next((x for x in marcas[i + 1:] if x[2]), None)
+                if prox:
+                    mk[2] = prox[2] if mk[1] <= prox[1] else prox[2] - 1
+                else:
+                    mk[2] = pub.year if (pub.year * 12 + mk[1] - 1) >= pub_ym - 1 else pub.year + 1
+        yms = [mk[2] * 12 + mk[1] - 1 for mk in marcas]
+        # intervalos: "entre A e B", "de A a B", "A até B"
+        for i in range(len(marcas) - 1):
+            entre = trecho[marcas[i][0]:marcas[i + 1][0]]
+            antes = trecho[max(0, marcas[i][0] - 25):marcas[i][0]]
+            if re.search(r"\b(e|a|ate)\s+$", entre) and re.search(r"\b(entre|de|desde)\s+(os\s+meses\s+de\s+)?$", antes) \
+                    and 0 < yms[i + 1] - yms[i] <= 14:
+                yms.extend(range(yms[i], yms[i + 1] + 1))
+        out.update(y for y in yms if pub_ym - 1 <= y <= pub_ym + 14)
+    return [f"{y // 12}-{y % 12 + 1:02d}" for y in sorted(out)]
 
 
 def countries_mentioned(text: str):
@@ -216,7 +274,53 @@ def countries_mentioned(text: str):
     return seen
 
 
+_CPM_RE = re.compile(r"\b(milheiro|cpm)\b(.{0,45}?)r\$\s*(\d{1,3}),(\d{2})")
+
+
+def extract_cpm(title: str, desc: str):
+    """Custo do milheiro (R$ por 1.000 milhas/pontos) e de qual programa. None se o post não informa."""
+    for txt in (title, desc):
+        n = norm(txt)
+        m = _CPM_RE.search(n)
+        if not m:
+            continue
+        valor = float(f"{m.group(3)}.{m.group(4)}")
+        if not 5 <= valor <= 80:
+            continue
+        # 1) programa logo depois de "milheiro" ("milheiro Smiles", "milheiro Privilege Club da Qatar")
+        prog = detect_program(m.group(2))
+        # 2) programa aéreo citado no título (destino da transferência/clube)
+        if not prog:
+            tn = norm(title)
+            hits = sorted((rx.search(tn).start(), name) for name, rx in _PROGRAM_RES
+                          if name in AIRLINE_PROGRAMS and rx.search(tn))
+            prog = hits[0][1] if hits else None
+        # 3) Livelo/Esfera (compra de pontos, clube, Turbo)
+        if not prog:
+            prog = detect_program(norm(title)) or detect_program(n)
+        if prog:
+            return valor, prog
+    return None
+
+
 def parse_post(title: str, desc_html: str, link: str, pub: datetime, source: str):
+    rec = _parse_post(title, desc_html, link, pub, source)
+    cpm = extract_cpm(clean(title), clean(desc_html))
+    if cpm:
+        if rec is None:
+            desc = clean(desc_html)
+            rec = {"id": link, "titulo": clean(title), "resumo": desc[:400], "link": link, "fonte": source,
+                   "publicado": pub.astimezone(BRT).isoformat(timespec="minutes"), "tipo": "compra",
+                   "valido_ate": parse_deadline(title + " " + desc, pub)}
+        rec["cpm"], rec["cpm_programa"] = cpm
+        # promoções que exigem pontos de outro banco (Inter, Premmia…) não servem para quem só tem Livelo/Esfera
+        tn = norm(clean(title))
+        rec["cpm_requer"] = [n for n, rx in _SOURCE_RES[2:] if rx.search(tn)]
+        rec.setdefault("valido_ate", parse_deadline(clean(title) + " " + clean(desc_html), pub))
+    return rec
+
+
+def _parse_post(title: str, desc_html: str, link: str, pub: datetime, source: str):
     desc = clean(desc_html)
     title = clean(title)
     text_n = norm(title + " " + desc)
@@ -273,7 +377,8 @@ def parse_post(title: str, desc_html: str, link: str, pub: datetime, source: str
                         "origens": origins,
                         "sai_de_sp": any(is_sao_paulo(o) for o in origins),
                         "origem_informada": bool(origins),
-                        "meses": months_mentioned(text_n)}
+                        "meses": months_mentioned(text_n),
+                        "periodo": periodo_viagem(title + ". " + desc, pub)}
 
     # 3) Outras promoções Livelo/Esfera (citadas no título)
     if re.search(r"\b(livelo|esfera)\b", title_n):
@@ -314,7 +419,7 @@ def parse_deadline(text: str, pub: datetime):
     m = re.search(r"\bate\s+(?:hoje|amanha|esta|este|a\s+proxima|o\s+proximo|segunda|terca|quarta|quinta|sexta|sabado|domingo)[^(]{0,25}\((\d{1,2})(?:/(\d{1,2}))?\)", n)
     if m:
         return mk(int(m.group(1)), int(m.group(2)) if m.group(2) else None)
-    if re.search(r"\b(so hoje|ate hoje|ultimo dia|termina hoje|acaba hoje)\b", n):
+    if re.search(r"\b(so hoje|ate hoje|ultimo dia|termina hoje|acaba hoje|ultimas horas|ate 23h59)\b", n):
         return pub_brt.replace(hour=23, minute=59).isoformat(timespec="minutes")
     if re.search(r"\bate amanha\b", n):
         return (pub_brt + timedelta(days=1)).replace(hour=23, minute=59).isoformat(timespec="minutes")

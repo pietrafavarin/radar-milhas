@@ -86,6 +86,8 @@ svg.spark{width:100%;height:70px;display:block}
 .callout{background:var(--surface-2);border-radius:12px;padding:12px 14px;margin:12px 0;line-height:1.5}
 .callout b{color:var(--ink)}
 h3.sub{font-size:14px;margin:18px 0 8px}
+h4.grp{font-size:13px;margin:14px 0 8px;font-weight:650}
+h4.grp .muted{font-weight:400}
 .ok{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}
 @media (max-width:640px){ .hide-sm{display:none} h1{font-size:21px} .filters{position:static} }
 </style>
@@ -138,8 +140,14 @@ h3.sub{font-size:14px;margin:18px 0 8px}
       <thead><tr><th>Programa</th><th class="num">Ida e volta custa ≈</th><th class="num">Você junta hoje</th><th class="num">Com a promo usual</th><th>Situação</th></tr></thead>
       <tbody></tbody></table></div>
     <p class="note" id="tNota"></p>
+    <h3 class="sub">💰 Quanto custa comprar o que falta</h3>
+    <div class="list scroll"><table id="tCompra">
+      <thead><tr><th>Programa</th><th class="num">Faltam</th><th class="num">Comprando direto</th><th class="num">Comprando Livelo e transferindo</th><th class="num">Esfera e transferindo</th></tr></thead>
+      <tbody></tbody></table></div>
+    <p class="note">Custo do milheiro = preço de 1.000 milhas, lido das promoções publicadas nos últimos 90 dias. Usa a promoção ativa quando houver (marcada "agora"), senão o valor típico. Pela Livelo/Esfera: compra de pontos ÷ (1 + bônus de transferência). Promoções que exigem pontos de outro banco ficam fora da conta.</p>
+    <div class="grid" id="tCompraPromos"></div>
     <h3 class="sub">Ofertas publicadas para este destino</h3>
-    <div class="grid" id="tOfertas"></div>
+    <div id="tOfertas"></div>
     <div id="tPromosWrap"><h3 class="sub">Promoções Livelo/Esfera para este destino (resgate direto com pontos)</h3>
     <div class="grid" id="tPromos"></div></div>
   </section>
@@ -350,6 +358,53 @@ function juntar(prog, modo){
   return { total, detalhes };
 }
 
+const SITES = {
+  "LATAM Pass": "https://www.latamairlines.com/br/pt", "Smiles": "https://www.smiles.com.br",
+  "Azul Fidelidade": "https://www.voeazul.com.br", "TAP Miles&Go": "https://www.flytap.com/pt-br",
+  "Iberia (Avios)": "https://www.iberia.com/br/", "Flying Blue": "https://www.flyingblue.com.br",
+  "Qatar (Avios)": "https://www.qatarairways.com/pt-br/privilege-club.html", "AAdvantage": "https://www.aa.com",
+};
+const MES_CURTO = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+function periodoTxt(per){
+  // ["2027-06","2027-07","2027-08"] -> "jun–ago/27"
+  if (!per?.length) return "";
+  const n = per.map(s => { const [y, m] = s.split("-").map(Number); return y * 12 + m - 1; });
+  const f = v => `${MES_CURTO[v % 12]}/${String(Math.floor(v / 12)).slice(2)}`;
+  const partes = []; let ini = n[0], fim = n[0];
+  for (const v of n.slice(1).concat([null])) {
+    if (v === fim + 1) { fim = v; continue; }
+    partes.push(ini === fim ? f(ini) : `${MES_CURTO[ini % 12]}–${f(fim)}`);
+    ini = fim = v;
+  }
+  return partes.join(", ");
+}
+
+const reais = v => v == null ? "–" : v.toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
+const reais2 = v => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL", minimumFractionDigits: 2 });
+
+function cpmDe(prog){
+  // promoção ativa acessível (sem exigir pontos de outro banco) ou valor típico de 90 dias
+  const m = DATA.milheiro?.[prog]; if (!m) return null;
+  const ativo = m.ativos.find(a => !a.requer.length);
+  if (ativo) return { cpm: ativo.cpm, agora: true, ate: ativo.valido_ate, link: ativo.link };
+  return m.tipico ? { cpm: m.tipico, agora: false, menor: m.menor } : null;
+}
+function custoFalta(prog, falta){
+  const direto = cpmDe(prog);
+  const via = ["Livelo", "Esfera"].map(o => {
+    const base = cpmDe(o); if (!base) return null;
+    const k = `${o}|${prog}`;
+    const b = Math.max(DATA.bonus_ativo[k]?.bonus_pct || 0, DATA.bonus_usual[k]?.media || 0);
+    const cpm = base.cpm / (1 + b / 100);
+    return { origem: o, cpm, bonus: b, base, custo: falta * cpm / 1000 };
+  });
+  return { direto: direto && { ...direto, custo: falta * direto.cpm / 1000 }, livelo: via[0], esfera: via[1] };
+}
+function celulaCusto(c, extra){
+  if (!c) return `<span class="muted">sem dados</span>`;
+  return `<b>${reais(c.custo)}</b><br><span class="muted" style="font-size:12px">milheiro ${reais2(c.cpm)}${extra || ""}</span>`;
+}
+
 function renderViagem(){
   const mesNum = viagem.mes ? +viagem.mes.split("-")[1] : null;
   const mesTxt = viagem.mes ? `${MESES[mesNum - 1]} de ${viagem.mes.split("-")[0]}` : "";
@@ -390,19 +445,60 @@ function renderViagem(){
         (melhor.promo.total < melhor.custo ? `, faltando ≈ ${fmt(melhor.custo - melhor.promo.total)}. ` : ". ") +
         `<span class="muted">Não transfira sem promoção: os pontos Livelo/Esfera rendem mais esperando um bônus.</span>`;
   }
+  // comprar o que falta (cenário: transferindo na promoção usual)
+  const faltas = linhas.filter(l => l.custo && l.promo.total < l.custo).map(l => ({ ...l, falta: l.custo - l.promo.total, compra: custoFalta(l.prog, l.custo - l.promo.total) }));
+  const menorCusto = f => Math.min(...[f.compra.direto, f.compra.livelo, f.compra.esfera].filter(Boolean).map(c => c.custo));
+  $("#tCompra tbody").innerHTML = faltas.length ? faltas.map(f => {
+    const { direto, livelo, esfera } = f.compra, min = menorCusto(f);
+    const marca = c => c && Math.abs(c.custo - min) < 1 ? ` style="background:var(--good-bg)"` : "";
+    return `<tr><td><b>${esc(f.prog)}</b></td><td class="num">${fmt(f.falta)}</td>
+      <td class="num"${marca(direto)}>${celulaCusto(direto, direto ? (direto.agora ? ` · <a href="${esc(direto.link)}" target="_blank" rel="noopener">promo agora</a>` : ` típico · já saiu por ${reais2(direto.menor)}`) : "")}</td>
+      <td class="num"${marca(livelo)}>${celulaCusto(livelo, livelo ? ` (Livelo ${reais2(livelo.base.cpm)}${livelo.bonus ? ` ÷ bônus +${livelo.bonus}%` : ", sem bônus"})` : "")}</td>
+      <td class="num"${marca(esfera)}>${celulaCusto(esfera, esfera ? ` (Esfera ${reais2(esfera.base.cpm)}${esfera.bonus ? ` ÷ bônus +${esfera.bonus}%` : ", sem bônus"})` : "")}</td></tr>`;
+  }).join("") : `<tr><td colspan="5" class="empty">Com a promoção usual você já cobre ida e volta: não precisa comprar.</td></tr>`;
+  if (melhor && melhor.promo.total < melhor.custo) {
+    const f = faltas.find(x => x.prog === melhor.prog);
+    if (f && isFinite(menorCusto(f))) resumo += `<br>💰 Comprar os ≈ ${fmt(f.falta)} que faltam custaria por volta de <b>${reais(menorCusto(f))}</b> (fora as taxas de embarque).`;
+  }
+  const progsCompra = new Set([...PROGRAMAS_VIAGEM, "Livelo", "Esfera"]);
+  const promosCompra = Object.entries(DATA.milheiro || {}).filter(([p]) => progsCompra.has(p))
+    .flatMap(([p, m]) => m.ativos.map(a => ({ ...a, prog: p })))
+    .filter((a, i, arr) => arr.findIndex(b => b.prog === a.prog && b.cpm === a.cpm) === i)
+    .sort((a, b) => a.cpm - b.cpm);
+  $("#tCompraPromos").innerHTML = promosCompra.map(a => `<article class="card">
+    <div class="row" style="justify-content:space-between"><b>${esc(a.prog)}</b><span class="tag good">ativa${a.valido_ate ? " até " + dataBR(a.valido_ate) : ""}</span></div>
+    <div class="price">${reais2(a.cpm)} <small>o milheiro</small></div>
+    ${a.requer.length ? `<div class="row"><span class="tag warn">precisa ter ${esc(a.requer.join(", "))}</span></div>` : ""}
+    <a class="title" href="${esc(a.link)}" target="_blank" rel="noopener">${esc(a.titulo)}</a></article>`).join("");
+
   $("#tResumo").innerHTML = resumo;
   $("#tNota").textContent = "Contas com paridade 1:1 (Livelo/Esfera → programa) e preço por trecho × 2 × pessoas; taxas em dinheiro à parte. " +
     "Cada Livelo/Esfera só pode ir para um programa: a coluna mostra o total se tudo for para aquele programa. " +
     (mesNum ? `As companhias liberam assentos cerca de 11 meses antes, então ofertas para ${MESES[mesNum - 1]} começam a aparecer por volta de ${MESES[mesNum % 12]} do ano anterior.` : "");
 
-  // ofertas do país
-  const ofs = DATA.passagens.filter(p => p.pais === viagem.pais && p.cabine === viagem.cabine);
-  $("#tOfertas").innerHTML = ofs.length ? ofs.map(p => {
+  // ofertas do país, separadas pelo mês da viagem
+  const nomeMes = mesNum ? `${MESES[mesNum - 1]}/${viagem.mes.slice(2, 4)}` : "";
+  const cardViagem = (p, extra = "") => {
     const ida = p.milhas * viagem.pax, iv = ida * 2, tem = juntar(p.programa, "hoje").total;
     const cabe = tem >= iv ? `<span class="tag good">cabe no seu saldo (ida e volta)</span>` : tem >= ida ? `<span class="tag warn">dá só a ida com o saldo de hoje</span>` : "";
-    const mes = mesNum && p.meses?.includes(mesNum) ? `<span class="tag good">cita ${MESES[mesNum - 1]}</span>` : "";
-    return cardPassagem(p).replace("</article>", `${cabe || mes ? `<div class="row">${mes}${cabe}</div>` : ""}</article>`);
-  }).join("") : `<div class="empty card">Nenhuma oferta de ${esc(viagem.cabine.toLowerCase())} para ${esc(viagem.pais)} nos últimos 120 dias.</div>`;
+    return cardPassagem(p).replace("</article>", `<div class="row">${extra}${cabe}</div></article>`);
+  };
+  const ofs = DATA.passagens.filter(p => p.pais === viagem.pais && p.cabine === viagem.cabine);
+  const comMes = ofs.filter(p => viagem.mes && p.periodo?.includes(viagem.mes));
+  const semData = ofs.filter(p => !p.periodo?.length);
+  const outroMes = ofs.filter(p => p.periodo?.length && !(viagem.mes && p.periodo.includes(viagem.mes)));
+  const conferir = p => SITES[p.programa] ? `<a class="tag warn" href="${SITES[p.programa]}" target="_blank" rel="noopener">conferir ${esc(nomeMes)} no site ${esc(p.programa)}</a>` : `<span class="tag warn">confira ${esc(nomeMes)} no site do programa</span>`;
+  // outras cidades da mesma região que citam o mês: dá para entrar por elas e seguir viagem
+  const reg = regiaoDoPais(viagem.pais);
+  const vizinhas = viagem.mes ? DATA.passagens.filter(p => p.regiao === reg && p.pais !== viagem.pais && p.cabine === viagem.cabine && p.periodo?.includes(viagem.mes)) : [];
+  $("#tOfertas").innerHTML = `
+    <h4 class="grp">✅ Citam ${esc(nomeMes || "o mês escolhido")} <span class="muted">(${comMes.length})</span></h4>
+    <div class="grid">${comMes.map(p => cardViagem(p, `<span class="tag good">viagem: ${esc(periodoTxt(p.periodo))}</span>`)).join("") || `<div class="empty card">Nenhuma oferta para ${esc(viagem.pais)} citou ${esc(nomeMes)} ainda.</div>`}</div>
+    <h4 class="grp">❔ Datas não informadas pelo blog <span class="muted">(${semData.length}). O preço da rota costuma se repetir em várias datas: confira ${esc(nomeMes)} no site</span></h4>
+    <div class="grid">${semData.map(p => cardViagem(p, conferir(p))).join("") || `<div class="empty">Nenhuma.</div>`}</div>
+    ${vizinhas.length ? `<h4 class="grp">🧭 Outras cidades de ${esc(reg)} com ${esc(nomeMes)} <span class="muted">(${vizinhas.length}). Dá para entrar por elas e seguir de trem ou voo barato</span></h4>
+    <div class="grid">${vizinhas.map(p => cardViagem(p, `<span class="tag good">viagem: ${esc(periodoTxt(p.periodo))}</span>`)).join("")}</div>` : ""}
+    ${outroMes.length ? `<details><summary>Ofertas para ${esc(viagem.pais)} em outras datas (${outroMes.length})</summary><div class="grid">${outroMes.map(p => cardViagem(p, `<span class="tag">viagem: ${esc(periodoTxt(p.periodo))}</span>`)).join("")}</div></details>` : ""}`;
 
   const promos = DATA.outras.filter(o => o.paises?.includes(viagem.pais));
   $("#tPromosWrap").hidden = !promos.length;

@@ -14,6 +14,7 @@ from pathlib import Path
 from radar import notify
 from radar.analyze import build
 from radar.collect import fetch_items
+from radar.enrich import enriquecer
 from radar.parser import parse_post
 
 RAIZ = Path(__file__).parent
@@ -26,6 +27,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--paginas", type=int, default=2)
     ap.add_argument("--offline", action="store_true")
+    ap.add_argument("--periodos", type=int, default=40, help="máx. de posts para ler o período de viagem (0 = não ler)")
     ap.add_argument("--sem-alertas", action="store_true", help="não envia Telegram")
     ap.add_argument("--simular-alertas", action="store_true", help="mostra os alertas sem enviar")
     ap.add_argument("--testar-alerta", action="store_true", help="envia uma mensagem de teste e sai")
@@ -49,13 +51,25 @@ def main():
         for item in fetch_items(args.paginas):
             brutos[item["link"]] = {**item, "publicado": item["publicado"].isoformat()}
 
+    def parse(b):
+        return parse_post(b["titulo"], b["descricao"], b["link"], datetime.fromisoformat(b["publicado"]), b["fonte"])
+
+    if not args.offline and args.periodos:
+        # ofertas de passagem sem período no resumo: ler a página completa (só Melhores Destinos)
+        def precisa(b):
+            r = parse(b)
+            return bool(r and r["tipo"] == "passagem" and not r["periodo"])
+        enriquecer(brutos, precisa, limite=args.periodos)
+
     BRUTO.parent.mkdir(exist_ok=True)
     BRUTO.write_text(json.dumps(brutos, ensure_ascii=False, indent=0), encoding="utf-8")
 
     posts = {}
     for b in brutos.values():
-        rec = parse_post(b["titulo"], b["descricao"], b["link"], datetime.fromisoformat(b["publicado"]), b["fonte"])
+        rec = parse(b)
         if rec:
+            if rec["tipo"] == "passagem" and b.get("periodo_artigo"):
+                rec["periodo"] = sorted(set(rec["periodo"]) | set(b["periodo_artigo"]))
             posts[rec["id"]] = rec
 
     data = build(posts)
