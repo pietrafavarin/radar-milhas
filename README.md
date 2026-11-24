@@ -71,7 +71,9 @@ py -m unittest discover -s tests   # testes do extrator
 
 ## Como funciona
 
-- `radar/collect.py`: feeds RSS do Melhores Destinos e do Passageiro de Primeira (com pausa entre pedidos)
+- `radar/collect.py`: feeds RSS do Melhores Destinos, Passageiro de Primeira, Pontos pra Voar e Alta Renda (com pausa entre pedidos)
+- `radar/ppv.py`: lê as tabelas dos "Alerta PPV" (rota, milhas e data exata de cada voo)
+- `radar/enrich.py`: lê o período de viagem no texto completo dos posts do Melhores Destinos
 - `radar/parser.py`: identifica programa, milhas por trecho, cabine, origem, destino, bônus e prazo
 - `radar/places.py`: dicionário de ~200 destinos com região. Adicione cidades aqui se faltar alguma
 - `radar/analyze.py`: média aparada dos últimos 12 meses, ranking do dia e cruzamento com Livelo/Esfera

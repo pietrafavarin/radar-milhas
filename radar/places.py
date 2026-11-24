@@ -251,5 +251,28 @@ def find_places(text: str):
     return out
 
 
+# aeroporto -> código da cidade usado aqui (quando diferente)
+AIRPORTS = {
+    "GRU": "SAO", "CGH": "SAO", "GIG": "RIO", "SDU": "RIO", "PLU": "CNF", "EZE": "BUE", "AEP": "BUE",
+    "JFK": "NYC", "EWR": "NYC", "LGA": "NYC", "IAD": "WAS", "DCA": "WAS", "ORD": "CHI", "MDW": "CHI",
+    "YYZ": "YTO", "CDG": "PAR", "ORY": "PAR", "LHR": "LON", "LGW": "LON", "STN": "LON",
+    "FCO": "ROM", "CIA": "ROM", "MXP": "MIL", "LIN": "MIL", "BGY": "MIL", "ARN": "STO", "KEF": "REK",
+    "NRT": "TYO", "HND": "TYO", "KIX": "OSA", "ICN": "SEL", "PEK": "BJS", "PKX": "BJS", "PVG": "SHA",
+    "SAW": "IST", "CJC": "CJC", "BER": "BER", "TXL": "BER",
+}
+
+
+def place_from_airport(text: str):
+    """'Roma (FCO)' -> código conhecido (ROM) ou None."""
+    m = re.search(r"\(([A-Z]{3})\)", text)
+    if m:
+        iata = m.group(1)
+        code = AIRPORTS.get(iata, iata)
+        if code in PLACES:
+            return code
+    found = find_places(text)
+    return found[0][1] if found else None
+
+
 def is_sao_paulo(code: str) -> bool:
     return code in {"SAO", "VCP"}

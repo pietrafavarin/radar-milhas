@@ -118,8 +118,8 @@ def build(posts: dict, agora: datetime | None = None) -> dict:
 
     for p in recentes:
         p["score"] = score(p)
-    destaques = sorted([p for p in recentes if p.get("desconto_pct", 0) >= 0],
-                       key=lambda p: -p["score"])[:12]
+    # todas as ofertas recentes ordenadas; o painel aplica os filtros e mostra as 12 primeiras
+    destaques = sorted([p for p in recentes if p.get("desconto_pct", 0) >= 0], key=lambda p: -p["score"])
 
     # ---------- resumo por destino ----------
     inicio_painel = agora - timedelta(days=JANELA_PAINEL)

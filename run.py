@@ -15,6 +15,7 @@ from radar import notify
 from radar.analyze import build
 from radar.collect import fetch_items
 from radar.enrich import enriquecer
+from radar.ppv import enriquecer_ppv, rotas_para_ofertas
 from radar.parser import parse_post
 
 RAIZ = Path(__file__).parent
@@ -60,6 +61,8 @@ def main():
             r = parse(b)
             return bool(r and r["tipo"] == "passagem" and not r["periodo"])
         enriquecer(brutos, precisa, limite=args.periodos)
+        # tabelas com datas dos Alertas PPV (Pontos pra Voar)
+        enriquecer_ppv(brutos, limite=args.periodos)
 
     BRUTO.parent.mkdir(exist_ok=True)
     BRUTO.write_text(json.dumps(brutos, ensure_ascii=False, indent=0), encoding="utf-8")
@@ -67,10 +70,15 @@ def main():
     posts = {}
     for b in brutos.values():
         rec = parse(b)
+        if rec and rec["tipo"] == "passagem" and b.get("rotas"):
+            rec = None  # o alerta já virou ofertas linha a linha; não contar o título de novo
         if rec:
             if rec["tipo"] == "passagem" and b.get("periodo_artigo"):
                 rec["periodo"] = sorted(set(rec["periodo"]) | set(b["periodo_artigo"]))
             posts[rec["id"]] = rec
+        # cada linha das tabelas do PPV vira uma oferta com data
+        for oferta in rotas_para_ofertas(b):
+            posts[oferta["id"]] = oferta
 
     data = build(posts)
     SAIDA.parent.mkdir(exist_ok=True)
@@ -83,7 +91,7 @@ def main():
     for p in data["destaques"][:5]:
         d = p.get("desconto_pct")
         desc = "sem histórico" if d is None else (f"{d:.0f}% abaixo da média" if d > 0 else f"{-d:.0f}% acima da média")
-        print(f"  {p['destino_nome']:18} {p['milhas']:>7,} {p['programa']:16} {p['cabine']:10} {desc}")
+        print(f"  {p['destino_nome']:18} {p['milhas']:>7,} {str(p['programa']):16} {p['cabine']:10} {desc}")
 
     if args.simular_alertas:
         notify.notificar(data, ALERTADOS, datetime.fromisoformat(data["gerado_em"]), simular=True)

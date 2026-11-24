@@ -10,6 +10,8 @@ FEEDS = [
     ("Passageiro de Primeira", "https://passageirodeprimeira.com/categorias/passagens-aereas/feed/"),
     ("Passageiro de Primeira", "https://passageirodeprimeira.com/categorias/promocoes/feed/"),
     ("Passageiro de Primeira", "https://passageirodeprimeira.com/feed/"),
+    ("Pontos pra Voar", "https://pontospravoar.com/feed/"),
+    ("Alta Renda", "https://altarendablog.com.br/feed/"),
 ]
 
 UA = "Mozilla/5.0 (compatible; RadarMilhas/1.0; uso pessoal)"

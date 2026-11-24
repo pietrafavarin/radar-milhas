@@ -255,7 +255,7 @@ function cardTransf(t){
 
 function render(){
   const pass = DATA.passagens.filter(filtro);
-  const dest = DATA.destaques.filter(filtro);
+  const dest = DATA.destaques.filter(filtro).slice(0, 12);
   $("#destaques").innerHTML = dest.length ? dest.map(cardPassagem).join("") : `<div class="empty card">Nenhuma oferta nova nas últimas 72h com esses filtros.</div>`;
 
   const ativasPrimeiro = (a, b) => (b.ativa - a.ativa) || b.publicado.localeCompare(a.publicado);
@@ -323,13 +323,14 @@ function abrirDestino(cod){
 }
 
 // ---------------- Minha viagem ----------------
-const VIAGEM_PADRAO = { pais: "Itália", mes: "2027-06", cabine: "Econômica", pax: 1,
+const VIAGEM_PADRAO = { versao: 2, pais: "Itália", mes: "2027-06", cabine: "Econômica", pax: 2,
   saldos: { "Livelo": 70000, "Esfera": 0, "Smiles": 20000, "LATAM Pass": 0, "Azul Fidelidade": 0, "TAP Miles&Go": 0 } };
 const PROGRAMAS_VIAGEM = ["LATAM Pass", "Smiles", "Azul Fidelidade", "TAP Miles&Go"];
 const MESES = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
 let viagem;
 try { viagem = { ...VIAGEM_PADRAO, ...JSON.parse(store.get("minhaViagem") || "{}") }; } catch { viagem = { ...VIAGEM_PADRAO }; }
 viagem.saldos = { ...VIAGEM_PADRAO.saldos, ...(viagem.saldos || {}) };
+if ((viagem.versao || 1) < 2) { viagem.pax = 2; viagem.versao = 2; }  // viagem passou a ser para 2 pessoas
 
 function regiaoDoPais(pais){
   const p = DATA.passagens.find(x => x.pais === pais) || DATA.destinos.find(x => x.pais === pais);
@@ -428,7 +429,7 @@ function renderViagem(){
     const ativo = ["Livelo", "Esfera"].map(o => DATA.bonus_ativo[`${o}|${l.prog}`] && { o, ...DATA.bonus_ativo[`${o}|${l.prog}`] }).filter(Boolean)[0];
     return `<tr>
       <td><b>${esc(l.prog)}</b>${ativo ? `<br><a class="tag ${ativo.o === "Livelo" ? "livelo" : "esfera"}" href="${esc(ativo.link)}" target="_blank" rel="noopener">${ativo.o} +${ativo.bonus_pct}% ativo${ativo.valido_ate ? " até " + dataBR(ativo.valido_ate) : ""}</a>` : ""}</td>
-      <td class="num">${l.custo == null ? "–" : `<b>${fmt(l.custo)}</b>`}<br><span class="muted" style="font-size:12px">${l.ref ? `${fmt(l.ref.media * viagem.pax)} por trecho × 2<br>(${esc(l.ref.fonte)})` : ""}</span></td>
+      <td class="num">${l.custo == null ? "–" : `<b>${fmt(l.custo)}</b>`}<br><span class="muted" style="font-size:12px">${l.ref ? `${fmt(l.ref.media)} por trecho × 2 trechos${viagem.pax > 1 ? ` × ${viagem.pax} pessoas` : ""}<br>(${esc(l.ref.fonte)})` : ""}</span></td>
       <td class="num"><b>${fmt(l.hoje.total)}</b><br><span class="muted" style="font-size:12px">${l.hoje.detalhes.map(esc).join("<br>+ ")}</span></td>
       <td class="num"><b>${fmt(l.promo.total)}</b><br><span class="muted" style="font-size:12px">${l.promo.detalhes.map(esc).join("<br>+ ")}</span></td>
       <td>${sit}</td></tr>`;
@@ -486,14 +487,15 @@ function renderViagem(){
     const cabe = tem >= iv ? `<span class="tag good">cabe no seu saldo (ida e volta)</span>` : tem >= ida ? `<span class="tag warn">dá só a ida com o saldo de hoje</span>` : "";
     return cardPassagem(p).replace("</article>", `<div class="row">${extra}${cabe}</div></article>`);
   };
-  const ofs = DATA.passagens.filter(p => p.pais === viagem.pais && p.cabine === viagem.cabine);
+  const progFiltro = $("#fProg").value;  // o filtro de programa do topo também vale aqui
+  const ofs = DATA.passagens.filter(p => p.pais === viagem.pais && p.cabine === viagem.cabine && (!progFiltro || p.programa === progFiltro));
   const comMes = ofs.filter(p => viagem.mes && p.periodo?.includes(viagem.mes));
   const semData = ofs.filter(p => !p.periodo?.length);
   const outroMes = ofs.filter(p => p.periodo?.length && !(viagem.mes && p.periodo.includes(viagem.mes)));
   const conferir = p => SITES[p.programa] ? `<a class="tag warn" href="${SITES[p.programa]}" target="_blank" rel="noopener">conferir ${esc(nomeMes)} no site ${esc(p.programa)}</a>` : `<span class="tag warn">confira ${esc(nomeMes)} no site do programa</span>`;
   // outras cidades da mesma região que citam o mês: dá para entrar por elas e seguir viagem
   const reg = regiaoDoPais(viagem.pais);
-  const vizinhas = viagem.mes ? DATA.passagens.filter(p => p.regiao === reg && p.pais !== viagem.pais && p.cabine === viagem.cabine && p.periodo?.includes(viagem.mes)) : [];
+  const vizinhas = viagem.mes ? DATA.passagens.filter(p => p.regiao === reg && p.pais !== viagem.pais && p.cabine === viagem.cabine && p.periodo?.includes(viagem.mes) && (!progFiltro || p.programa === progFiltro)) : [];
   $("#tOfertas").innerHTML = `
     <h4 class="grp">✅ Citam ${esc(nomeMes || "o mês escolhido")} <span class="muted">(${comMes.length})</span></h4>
     <div class="grid">${comMes.map(p => cardViagem(p, `<span class="tag good">viagem: ${esc(periodoTxt(p.periodo))}</span>`)).join("") || `<div class="empty card">Nenhuma oferta para ${esc(viagem.pais)} citou ${esc(nomeMes)} ainda.</div>`}</div>
@@ -531,7 +533,10 @@ $("#destinos").addEventListener("click", e => { const b = e.target.closest("[dat
 document.querySelectorAll("#tabela th").forEach(th => th.onclick = () => {
   const k = th.dataset.k; sortDir = sortKey === k ? -sortDir : (k === "publicado" || k === "desconto_pct" ? -1 : 1); sortKey = k; render();
 });
-document.querySelectorAll(".filters input,.filters select").forEach(el => el.addEventListener("input", render));
+document.querySelectorAll(".filters input,.filters select").forEach(el => el.addEventListener("input", () => {
+  render();
+  if (DATA?.stats_pais) renderViagem();
+}));
 
 fetch("data.json", {cache: "no-store"}).then(r => r.json()).then(d => {
   DATA = d;
