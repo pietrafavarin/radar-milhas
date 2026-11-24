@@ -70,15 +70,24 @@ def build(posts: dict, agora: datetime | None = None) -> dict:
     # ---------- passagens vs. média ----------
     por_chave = defaultdict(list)
     por_regiao = defaultdict(list)
+    por_rota = defaultdict(list)
+
+    def chave_rota(p):
+        return (p["origens"][0], p["destino"], p["programa"], p["cabine"]) if p["origens"] else None
+
     for p in passagens:
         por_chave[(p["destino"], p["programa"], p["cabine"])].append(p)
         por_regiao[(p["regiao"], p["programa"], p["cabine"])].append(p)
+        if chave_rota(p):
+            por_rota[chave_rota(p)].append(p)
 
     def comparar(p, grupo, nivel):
         inicio = _dt(p["publicado"]) - timedelta(days=JANELA_HISTORICO)
-        # compara com as outras ofertas (antes e depois), exceto ela mesma
-        valores = [q["milhas"] for q in grupo if q["id"] != p["id"] and _dt(q["publicado"]) >= inicio]
-        if len(valores) < (2 if nivel == "destino" else 5):
+        # compara com as outras ofertas (antes e depois), exceto ela mesma e as outras linhas do mesmo post
+        # (um alerta pode repetir a mesma rota em várias datas, o que puxaria a média para o próprio preço)
+        valores = [q["milhas"] for q in grupo
+                   if q["id"] != p["id"] and q["link"] != p["link"] and _dt(q["publicado"]) >= inicio]
+        if len(valores) < (5 if nivel == "regiao" else 2):
             return False
         media = media_aparada(valores)
         p["media"] = round(media)
@@ -89,9 +98,17 @@ def build(posts: dict, agora: datetime | None = None) -> dict:
         return True
 
     for p in passagens:
-        p.pop("media", None), p.pop("desconto_pct", None), p.pop("abaixo_da_media", None)
-        if not comparar(p, por_chave[(p["destino"], p["programa"], p["cabine"])], "destino"):
-            comparar(p, por_regiao[(p["regiao"], p["programa"], p["cabine"])], "regiao")
+        for campo in ("media", "desconto_pct", "abaixo_da_media", "base_media", "amostras"):
+            p.pop(campo, None)
+        # 1) mesma rota (origem + destino); 2) só internacional: mesmo destino, depois a região.
+        # Nos voos nacionais a distância muda muito com a origem, então sem histórico da rota não há comparação.
+        if chave_rota(p) and comparar(p, por_rota[chave_rota(p)], "rota"):
+            pass
+        elif p["regiao"] != "Nacional":
+            if not comparar(p, por_chave[(p["destino"], p["programa"], p["cabine"])], "destino") \
+                    and p["regiao"] not in ("América do Sul", "Caribe e América Central"):
+                # média da região só para longa distância, onde o preço varia menos entre os destinos
+                comparar(p, por_regiao[(p["regiao"], p["programa"], p["cabine"])], "regiao")
         promos = ativas_foco.get(p["programa"], [])
         p["transferencias_ativas"] = promos
         if promos:
