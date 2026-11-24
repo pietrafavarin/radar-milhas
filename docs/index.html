@@ -137,7 +137,7 @@ h4.grp .muted{font-weight:400}
     </div>
     <div class="callout" id="tResumo"></div>
     <div class="list scroll"><table id="tCalc">
-      <thead><tr><th>Programa</th><th class="num">Ida e volta custa ≈</th><th class="num">Você junta hoje</th><th class="num">Com a promo usual</th><th>Situação</th></tr></thead>
+      <thead><tr><th>Programa</th><th class="num">Quanto custa<br>ida e volta</th><th class="num">Quanto você teria<br>transferindo hoje</th><th class="num">Quanto você teria<br>esperando a próxima promoção</th><th>Resultado</th></tr></thead>
       <tbody></tbody></table></div>
     <p class="note" id="tNota"></p>
     <h3 class="sub">💰 Quanto custa comprar o que falta</h3>
@@ -345,15 +345,17 @@ function precoRef(prog){
 }
 function juntar(prog, modo){
   // saldo próprio + Livelo/Esfera transferidos (paridade 1:1) com o bônus do modo escolhido
-  let total = viagem.saldos[prog] || 0;
-  const detalhes = [];
+  const proprio = viagem.saldos[prog] || 0;
+  let total = proprio;
+  const detalhes = proprio ? [`${fmt(proprio)} que você já tem`] : [];
   for (const o of ["Livelo", "Esfera"]) {
     const pts = viagem.saldos[o] || 0; if (!pts) continue;
     const k = `${o}|${prog}`;
     const ativo = DATA.bonus_ativo[k]?.bonus_pct || 0;
     const b = modo === "hoje" ? ativo : Math.max(ativo, DATA.bonus_usual[k]?.media || 0);
-    total += Math.floor(pts * (1 + b / 100));
-    detalhes.push(`${o}${b ? ` +${b}%` : " sem bônus"}`);
+    const vira = Math.floor(pts * (1 + b / 100));
+    total += vira;
+    detalhes.push(b ? `${fmt(pts)} ${o} +${b}% de bônus = ${fmt(vira)}` : `${fmt(pts)} ${o} sem bônus = ${fmt(vira)}`);
   }
   return { total, detalhes };
 }
@@ -417,17 +419,18 @@ function renderViagem(){
     return { prog, ref, custo, hoje, promo };
   });
   $("#tCalc tbody").innerHTML = linhas.map(l => {
-    const sit = l.custo == null ? `<span class="muted">sem preço de referência</span>`
-      : l.hoje.total >= l.custo ? `<span class="ok">✓ dá hoje</span>`
-      : l.promo.total >= l.custo ? `<span class="ok">✓ dá com a promo usual</span>`
-      : l.promo.total >= l.custo / 2 ? `<span>só a ida · faltam ${fmt(l.custo - l.promo.total)}</span>`
-      : `<span class="no">faltam ${fmt(l.custo - l.promo.total)}</span>`;
+    const ida = l.custo / 2;
+    const sit = l.custo == null ? `<span class="muted">sem preço de referência para este destino</span>`
+      : l.hoje.total >= l.custo ? `<span class="ok">✓ Dá para ida e volta já hoje</span>`
+      : l.promo.total >= l.custo ? `<span class="ok">✓ Dá para ida e volta se esperar a promoção</span>`
+      : l.promo.total >= ida ? `Mesmo com a promoção, dá <b>só a ida</b>.<br>Para ida e volta faltam <b>${fmt(l.custo - l.promo.total)}</b> milhas.`
+      : `<span class="no">Não dá nem a ida.</span><br>Faltam <b>${fmt(l.custo - l.promo.total)}</b> milhas para ida e volta.`;
     const ativo = ["Livelo", "Esfera"].map(o => DATA.bonus_ativo[`${o}|${l.prog}`] && { o, ...DATA.bonus_ativo[`${o}|${l.prog}`] }).filter(Boolean)[0];
     return `<tr>
       <td><b>${esc(l.prog)}</b>${ativo ? `<br><a class="tag ${ativo.o === "Livelo" ? "livelo" : "esfera"}" href="${esc(ativo.link)}" target="_blank" rel="noopener">${ativo.o} +${ativo.bonus_pct}% ativo${ativo.valido_ate ? " até " + dataBR(ativo.valido_ate) : ""}</a>` : ""}</td>
-      <td class="num">${l.custo == null ? "–" : fmt(l.custo)}<br><span class="muted" style="font-size:12px">${l.ref ? esc(l.ref.fonte) : ""}</span></td>
-      <td class="num">${fmt(l.hoje.total)}<br><span class="muted" style="font-size:12px">${esc(l.hoje.detalhes.join(" · "))}</span></td>
-      <td class="num">${fmt(l.promo.total)}<br><span class="muted" style="font-size:12px">${esc(l.promo.detalhes.join(" · "))}</span></td>
+      <td class="num">${l.custo == null ? "–" : `<b>${fmt(l.custo)}</b>`}<br><span class="muted" style="font-size:12px">${l.ref ? `${fmt(l.ref.media * viagem.pax)} por trecho × 2<br>(${esc(l.ref.fonte)})` : ""}</span></td>
+      <td class="num"><b>${fmt(l.hoje.total)}</b><br><span class="muted" style="font-size:12px">${l.hoje.detalhes.map(esc).join("<br>+ ")}</span></td>
+      <td class="num"><b>${fmt(l.promo.total)}</b><br><span class="muted" style="font-size:12px">${l.promo.detalhes.map(esc).join("<br>+ ")}</span></td>
       <td>${sit}</td></tr>`;
   }).join("");
 
