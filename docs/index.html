@@ -76,6 +76,17 @@ details summary{cursor:pointer;color:var(--muted);margin:10px 0}
 .scroll{overflow-x:auto}
 svg.spark{width:100%;height:70px;display:block}
 .theme{all:unset;cursor:pointer;color:var(--muted);font-size:13px}
+.trip{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:4px 16px 16px;margin-top:18px;box-shadow:var(--shadow)}
+.trip h2{margin-top:14px}
+.trip-form{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:6px 0}
+.trip-form label{display:flex;flex-direction:column;font-size:12px;color:var(--muted);gap:3px}
+.trip-form input,.trip-form select{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:6px 8px;min-width:0}
+.saldos input{width:110px}
+#tPax{width:70px}
+.callout{background:var(--surface-2);border-radius:12px;padding:12px 14px;margin:12px 0;line-height:1.5}
+.callout b{color:var(--ink)}
+h3.sub{font-size:14px;margin:18px 0 8px}
+.ok{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}
 @media (max-width:640px){ .hide-sm{display:none} h1{font-size:21px} .filters{position:static} }
 </style>
 </head>
@@ -104,6 +115,34 @@ svg.spark{width:100%;height:70px;display:block}
     <label class="chip"><input type="checkbox" id="fAbaixo"> Só abaixo da média</label>
     <input id="fBusca" type="search" placeholder="Buscar destino (ex.: Lisboa, Japão)">
   </div>
+
+  <section id="viagem" class="trip">
+    <h2>🧳 Minha viagem <small id="tripSub"></small></h2>
+    <div class="trip-form">
+      <label>Destino <select id="tPais"></select></label>
+      <label>Mês <input id="tMes" type="month"></label>
+      <label>Cabine <select id="tCabine"><option>Econômica</option><option>Executiva</option></select></label>
+      <label>Pessoas <input id="tPax" type="number" min="1" max="9" inputmode="numeric"></label>
+    </div>
+    <div class="trip-form saldos">
+      <span class="muted">Seus saldos:</span>
+      <label>Livelo <input data-saldo="Livelo" type="number" min="0" step="1000" inputmode="numeric"></label>
+      <label>Esfera <input data-saldo="Esfera" type="number" min="0" step="1000" inputmode="numeric"></label>
+      <label>Smiles <input data-saldo="Smiles" type="number" min="0" step="1000" inputmode="numeric"></label>
+      <label>LATAM Pass <input data-saldo="LATAM Pass" type="number" min="0" step="1000" inputmode="numeric"></label>
+      <label>Azul <input data-saldo="Azul Fidelidade" type="number" min="0" step="1000" inputmode="numeric"></label>
+      <label>TAP <input data-saldo="TAP Miles&amp;Go" type="number" min="0" step="1000" inputmode="numeric"></label>
+    </div>
+    <div class="callout" id="tResumo"></div>
+    <div class="list scroll"><table id="tCalc">
+      <thead><tr><th>Programa</th><th class="num">Ida e volta custa ≈</th><th class="num">Você junta hoje</th><th class="num">Com a promo usual</th><th>Situação</th></tr></thead>
+      <tbody></tbody></table></div>
+    <p class="note" id="tNota"></p>
+    <h3 class="sub">Ofertas publicadas para este destino</h3>
+    <div class="grid" id="tOfertas"></div>
+    <div id="tPromosWrap"><h3 class="sub">Promoções Livelo/Esfera para este destino (resgate direto com pontos)</h3>
+    <div class="grid" id="tPromos"></div></div>
+  </section>
 
   <h2>🔥 Melhores do dia <small>últimas 72h, ordenadas por desconto vs. média</small></h2>
   <div class="grid" id="destaques"></div>
@@ -216,7 +255,7 @@ function render(){
   $("#transfFoco").innerHTML = foco.length ? foco.map(cardTransf).join("") : `<div class="empty card">Nenhuma promoção Livelo/Esfera encontrada recentemente.</div>`;
   const outros = DATA.transferencias.filter(t => !t.foco).sort(ativasPrimeiro).slice(0, 9);
   $("#transfOutros").innerHTML = outros.map(cardTransf).join("") || `<div class="empty">Nada recente.</div>`;
-  $("#outras").innerHTML = DATA.outras.map(o => `<article class="card"><div class="row">${o.origens_pontos.map(x=>`<span class="tag ${x==="Livelo"?"livelo":"esfera"}">${esc(x)}</span>`).join("")}<span class="tag">${dataBR(o.publicado)}</span>${o.valido_ate?`<span class="tag">até ${dataBR(o.valido_ate)}</span>`:""}</div><a class="title" style="-webkit-line-clamp:3;color:var(--ink)" href="${esc(o.link)}" target="_blank" rel="noopener">${esc(o.titulo)}</a></article>`).join("") || `<div class="empty">Nada recente.</div>`;
+  $("#outras").innerHTML = DATA.outras.filter(o => Date.now() - new Date(o.publicado) < 21 * 864e5).map(o => `<article class="card"><div class="row">${o.origens_pontos.map(x=>`<span class="tag ${x==="Livelo"?"livelo":"esfera"}">${esc(x)}</span>`).join("")}<span class="tag">${dataBR(o.publicado)}</span>${o.valido_ate?`<span class="tag">até ${dataBR(o.valido_ate)}</span>`:""}</div><a class="title" style="-webkit-line-clamp:3;color:var(--ink)" href="${esc(o.link)}" target="_blank" rel="noopener">${esc(o.titulo)}</a></article>`).join("") || `<div class="empty">Nada recente.</div>`;
 
   // destinos agrupados por região, só os que têm oferta com os filtros atuais
   const porDest = {};
@@ -275,6 +314,118 @@ function abrirDestino(cod){
   $("#dlg").showModal();
 }
 
+// ---------------- Minha viagem ----------------
+const VIAGEM_PADRAO = { pais: "Itália", mes: "2027-06", cabine: "Econômica", pax: 1,
+  saldos: { "Livelo": 70000, "Esfera": 0, "Smiles": 20000, "LATAM Pass": 0, "Azul Fidelidade": 0, "TAP Miles&Go": 0 } };
+const PROGRAMAS_VIAGEM = ["LATAM Pass", "Smiles", "Azul Fidelidade", "TAP Miles&Go"];
+const MESES = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
+let viagem;
+try { viagem = { ...VIAGEM_PADRAO, ...JSON.parse(store.get("minhaViagem") || "{}") }; } catch { viagem = { ...VIAGEM_PADRAO }; }
+viagem.saldos = { ...VIAGEM_PADRAO.saldos, ...(viagem.saldos || {}) };
+
+function regiaoDoPais(pais){
+  const p = DATA.passagens.find(x => x.pais === pais) || DATA.destinos.find(x => x.pais === pais);
+  return p ? p.regiao : null;
+}
+function precoRef(prog){
+  const k = `${prog}|${viagem.cabine}`;
+  const sp = DATA.stats_pais[viagem.pais]?.[k];
+  if (sp) return { media: sp.media, fonte: `média ${viagem.pais}, ${sp.n} oferta${sp.n > 1 ? "s" : ""}` };
+  const reg = regiaoDoPais(viagem.pais), sr = reg && DATA.stats_regiao[reg]?.[k];
+  if (sr && sr.n >= 3) return { media: sr.media, fonte: `estimativa: média ${reg}, ${sr.n} ofertas` };
+  return null;
+}
+function juntar(prog, modo){
+  // saldo próprio + Livelo/Esfera transferidos (paridade 1:1) com o bônus do modo escolhido
+  let total = viagem.saldos[prog] || 0;
+  const detalhes = [];
+  for (const o of ["Livelo", "Esfera"]) {
+    const pts = viagem.saldos[o] || 0; if (!pts) continue;
+    const k = `${o}|${prog}`;
+    const ativo = DATA.bonus_ativo[k]?.bonus_pct || 0;
+    const b = modo === "hoje" ? ativo : Math.max(ativo, DATA.bonus_usual[k]?.media || 0);
+    total += Math.floor(pts * (1 + b / 100));
+    detalhes.push(`${o}${b ? ` +${b}%` : " sem bônus"}`);
+  }
+  return { total, detalhes };
+}
+
+function renderViagem(){
+  const mesNum = viagem.mes ? +viagem.mes.split("-")[1] : null;
+  const mesTxt = viagem.mes ? `${MESES[mesNum - 1]} de ${viagem.mes.split("-")[0]}` : "";
+  $("#tripSub").textContent = `${viagem.pais}${mesTxt ? " · " + mesTxt : ""} · ${viagem.pax} pessoa${viagem.pax > 1 ? "s" : ""}`;
+
+  const linhas = PROGRAMAS_VIAGEM.map(prog => {
+    const ref = precoRef(prog);
+    const custo = ref ? ref.media * 2 * viagem.pax : null;
+    const hoje = juntar(prog, "hoje"), promo = juntar(prog, "promo");
+    return { prog, ref, custo, hoje, promo };
+  });
+  $("#tCalc tbody").innerHTML = linhas.map(l => {
+    const sit = l.custo == null ? `<span class="muted">sem preço de referência</span>`
+      : l.hoje.total >= l.custo ? `<span class="ok">✓ dá hoje</span>`
+      : l.promo.total >= l.custo ? `<span class="ok">✓ dá com a promo usual</span>`
+      : l.promo.total >= l.custo / 2 ? `<span>só a ida · faltam ${fmt(l.custo - l.promo.total)}</span>`
+      : `<span class="no">faltam ${fmt(l.custo - l.promo.total)}</span>`;
+    const ativo = ["Livelo", "Esfera"].map(o => DATA.bonus_ativo[`${o}|${l.prog}`] && { o, ...DATA.bonus_ativo[`${o}|${l.prog}`] }).filter(Boolean)[0];
+    return `<tr>
+      <td><b>${esc(l.prog)}</b>${ativo ? `<br><a class="tag ${ativo.o === "Livelo" ? "livelo" : "esfera"}" href="${esc(ativo.link)}" target="_blank" rel="noopener">${ativo.o} +${ativo.bonus_pct}% ativo${ativo.valido_ate ? " até " + dataBR(ativo.valido_ate) : ""}</a>` : ""}</td>
+      <td class="num">${l.custo == null ? "–" : fmt(l.custo)}<br><span class="muted" style="font-size:12px">${l.ref ? esc(l.ref.fonte) : ""}</span></td>
+      <td class="num">${fmt(l.hoje.total)}<br><span class="muted" style="font-size:12px">${esc(l.hoje.detalhes.join(" · "))}</span></td>
+      <td class="num">${fmt(l.promo.total)}<br><span class="muted" style="font-size:12px">${esc(l.promo.detalhes.join(" · "))}</span></td>
+      <td>${sit}</td></tr>`;
+  }).join("");
+
+  // resumo: melhor caminho
+  const comPreco = linhas.filter(l => l.custo);
+  const melhor = comPreco.sort((a, b) => b.promo.total / b.custo - a.promo.total / a.custo)[0];
+  let resumo;
+  if (!melhor) resumo = `Ainda não há preços de referência para ${esc(viagem.pais)} em ${esc(viagem.cabine)}. Assim que os blogs publicarem ofertas, a conta aparece aqui.`;
+  else {
+    const prontoHoje = comPreco.find(l => l.hoje.total >= l.custo);
+    const pct = Math.min(100, Math.round(melhor.promo.total / melhor.custo * 100));
+    resumo = prontoHoje
+      ? `🎉 <b>Você já consegue emitir ida e volta pela ${esc(prontoHoje.prog)}</b> com os bônus de hoje (${fmt(prontoHoje.hoje.total)} de ≈ ${fmt(prontoHoje.custo)}).`
+      : `Melhor caminho hoje: <b>${esc(melhor.prog)}</b>${melhor.ref.fonte.startsWith("estimativa") ? " (preço estimado pela região, ainda sem ofertas deste destino)" : ""}. Transferindo na próxima promoção com bônus usual você chega a <b>${fmt(melhor.promo.total)}</b> de ≈ ${fmt(melhor.custo)} para ida e volta (<b>${pct}%</b>)` +
+        (melhor.promo.total < melhor.custo ? `, faltando ≈ ${fmt(melhor.custo - melhor.promo.total)}. ` : ". ") +
+        `<span class="muted">Não transfira sem promoção: os pontos Livelo/Esfera rendem mais esperando um bônus.</span>`;
+  }
+  $("#tResumo").innerHTML = resumo;
+  $("#tNota").textContent = "Contas com paridade 1:1 (Livelo/Esfera → programa) e preço por trecho × 2 × pessoas; taxas em dinheiro à parte. " +
+    "Cada Livelo/Esfera só pode ir para um programa: a coluna mostra o total se tudo for para aquele programa. " +
+    (mesNum ? `As companhias liberam assentos cerca de 11 meses antes, então ofertas para ${MESES[mesNum - 1]} começam a aparecer por volta de ${MESES[mesNum % 12]} do ano anterior.` : "");
+
+  // ofertas do país
+  const ofs = DATA.passagens.filter(p => p.pais === viagem.pais && p.cabine === viagem.cabine);
+  $("#tOfertas").innerHTML = ofs.length ? ofs.map(p => {
+    const ida = p.milhas * viagem.pax, iv = ida * 2, tem = juntar(p.programa, "hoje").total;
+    const cabe = tem >= iv ? `<span class="tag good">cabe no seu saldo (ida e volta)</span>` : tem >= ida ? `<span class="tag warn">dá só a ida com o saldo de hoje</span>` : "";
+    const mes = mesNum && p.meses?.includes(mesNum) ? `<span class="tag good">cita ${MESES[mesNum - 1]}</span>` : "";
+    return cardPassagem(p).replace("</article>", `${cabe || mes ? `<div class="row">${mes}${cabe}</div>` : ""}</article>`);
+  }).join("") : `<div class="empty card">Nenhuma oferta de ${esc(viagem.cabine.toLowerCase())} para ${esc(viagem.pais)} nos últimos 120 dias.</div>`;
+
+  const promos = DATA.outras.filter(o => o.paises?.includes(viagem.pais));
+  $("#tPromosWrap").hidden = !promos.length;
+  $("#tPromos").innerHTML = promos.map(o => `<article class="card"><div class="row">${o.origens_pontos.map(x => `<span class="tag ${x === "Livelo" ? "livelo" : "esfera"}">${esc(x)}</span>`).join("")}<span class="tag">${dataBR(o.publicado)}</span>${o.valido_ate ? `<span class="tag ${new Date(o.valido_ate) >= new Date() ? "good" : ""}">até ${dataBR(o.valido_ate)}</span>` : ""}</div><a class="title" style="-webkit-line-clamp:3;color:var(--ink)" href="${esc(o.link)}" target="_blank" rel="noopener">${esc(o.titulo)}</a></article>`).join("");
+}
+
+function iniciarViagem(){
+  if (!DATA.stats_pais) { $("#viagem").hidden = true; return; }
+  const paises = [...new Set([...Object.keys(DATA.stats_pais), viagem.pais])].sort((a, b) => a.localeCompare(b, "pt"));
+  $("#tPais").innerHTML = paises.map(p => `<option${p === viagem.pais ? " selected" : ""}>${esc(p)}</option>`).join("");
+  $("#tMes").value = viagem.mes; $("#tCabine").value = viagem.cabine; $("#tPax").value = viagem.pax;
+  document.querySelectorAll("[data-saldo]").forEach(i => i.value = viagem.saldos[i.dataset.saldo] || "");
+  const salvar = () => {
+    viagem.pais = $("#tPais").value; viagem.mes = $("#tMes").value; viagem.cabine = $("#tCabine").value;
+    viagem.pax = Math.max(1, +$("#tPax").value || 1);
+    document.querySelectorAll("[data-saldo]").forEach(i => viagem.saldos[i.dataset.saldo] = Math.max(0, +i.value || 0));
+    store.set("minhaViagem", JSON.stringify(viagem));
+    renderViagem();
+  };
+  document.querySelectorAll("#viagem input,#viagem select").forEach(el => el.addEventListener("input", salvar));
+  renderViagem();
+}
+
 $("#dlgClose").onclick = () => $("#dlg").close();
 $("#dlg").addEventListener("click", e => { if (e.target.id === "dlg") $("#dlg").close(); });
 $("#destinos").addEventListener("click", e => { const b = e.target.closest("[data-dest]"); if (b) abrirDestino(b.dataset.dest); });
@@ -289,6 +440,7 @@ fetch("data.json", {cache: "no-store"}).then(r => r.json()).then(d => {
   $("#fProg").insertAdjacentHTML("beforeend", progs.map(p => `<option>${esc(p)}</option>`).join(""));
   $("#updated").textContent = `Atualizado em ${new Date(d.gerado_em).toLocaleString("pt-BR", {dateStyle:"short", timeStyle:"short"})} · ${fmt(d.totais.passagens)} ofertas no histórico`;
   render();
+  iniciarViagem();
 }).catch(e => { $("#updated").textContent = "Não consegui carregar data.json: " + e; });
 </script>
 </body>

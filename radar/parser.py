@@ -197,6 +197,25 @@ def _choose_price(title: str, desc: str):
     return value, program
 
 
+_MES_ABREV = {m[:3]: i for m, i in _MONTHS.items()}
+
+
+def months_mentioned(text_n: str):
+    """Meses de viagem citados no texto ("junho", "jun/27", "entre maio e julho")."""
+    found = {_MONTHS[m] for m in re.findall(r"\b(" + "|".join(_MONTHS) + r")\b", text_n)}
+    found |= {_MES_ABREV[m] for m in re.findall(r"\b(" + "|".join(_MES_ABREV) + r")\s*/\s*\d{2}", text_n)}
+    return sorted(found)
+
+
+def countries_mentioned(text: str):
+    seen = []
+    for _, code in find_places(text):
+        pais = PLACES[code]["pais"]
+        if pais not in seen:
+            seen.append(pais)
+    return seen
+
+
 def parse_post(title: str, desc_html: str, link: str, pub: datetime, source: str):
     desc = clean(desc_html)
     title = clean(title)
@@ -253,12 +272,15 @@ def parse_post(title: str, desc_html: str, link: str, pub: datetime, source: str
                         "regiao": place["regiao"],
                         "origens": origins,
                         "sai_de_sp": any(is_sao_paulo(o) for o in origins),
-                        "origem_informada": bool(origins)}
+                        "origem_informada": bool(origins),
+                        "meses": months_mentioned(text_n)}
 
     # 3) Outras promoções Livelo/Esfera (citadas no título)
     if re.search(r"\b(livelo|esfera)\b", title_n):
         return {**base, "tipo": "outra",
                 "origens_pontos": [n for n, rx in _SOURCE_RES[:2] if rx.search(text_n)],
+                "paises": countries_mentioned(title),
+                "meses": months_mentioned(text_n),
                 "valido_ate": parse_deadline(title + " " + desc, pub)}
     return None
 

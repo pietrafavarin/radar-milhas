@@ -5,6 +5,7 @@ from collections import defaultdict
 from datetime import datetime, timedelta
 
 from .parser import BRT
+from .places import PLACES
 
 JANELA_HISTORICO = 365     # dias usados para calcular a média
 JANELA_PAINEL = 120        # dias de passagens exibidas no painel
@@ -143,13 +144,48 @@ def build(posts: dict, agora: datetime | None = None) -> dict:
                                      "media": round(media_aparada(hist)) if len(hist) >= 2 else None,
                                      "amostras": len(hist)}
 
+    # ---------- estatísticas por país e por região (12 meses), para a seção "Minha viagem" ----------
+    def sai_do_brasil(p, aceita_sem_origem):
+        if not p["origens"]:
+            return aceita_sem_origem
+        return any(PLACES.get(o, {}).get("pais") == "Brasil" for o in p["origens"])
+
+    def stats(chave):
+        # só voos saindo do Brasil (região: exige origem informada, para não misturar voos internos da Europa)
+        grupos = defaultdict(list)
+        for p in passagens:
+            if _dt(p["publicado"]) >= agora - timedelta(days=JANELA_HISTORICO) and \
+                    sai_do_brasil(p, aceita_sem_origem=(chave == "pais")) and p["regiao"] != "Nacional":
+                grupos[(p[chave], f'{p["programa"]}|{p["cabine"]}')].append(p["milhas"])
+        out = defaultdict(dict)
+        for (k, pc), vals in grupos.items():
+            out[k][pc] = {"media": round(media_aparada(vals)), "menor": min(vals), "n": len(vals)}
+        return out
+
+    bonus_usual, bonus_ativo = {}, {}
+    for (o, prog), vals in bonus_hist.items():
+        if o in PROGRAMAS_FOCO:
+            bonus_usual[f"{o}|{prog}"] = {"media": round(media_aparada(vals)), "n": len(vals), "max": max(vals)}
+    for t in transfers:
+        if t["ativa"]:
+            for o in t["origens_pontos"]:
+                for prog in t["programas"]:
+                    k = f"{o}|{prog}"
+                    if o in PROGRAMAS_FOCO and t["bonus_pct"] > bonus_ativo.get(k, {}).get("bonus_pct", -1):
+                        bonus_ativo[k] = {"bonus_pct": t["bonus_pct"], "valido_ate": t.get("valido_ate"),
+                                          "link": t["link"], "titulo": t["titulo"]}
+
     return {
+        "stats_pais": stats("pais"),
+        "stats_regiao": stats("regiao"),
+        "bonus_usual": bonus_usual,
+        "bonus_ativo": bonus_ativo,
         "gerado_em": agora.isoformat(timespec="minutes"),
         "destaques": destaques,
         "passagens": sorted(exibidas, key=lambda p: p["publicado"], reverse=True),
         "transferencias": sorted([t for t in transfers if _dt(t["publicado"]) >= agora - timedelta(days=120)],
                                  key=lambda t: (not t["ativa"], not t["foco"], t["publicado"]), reverse=False),
-        "outras": sorted([o for o in outras if _dt(o["publicado"]) >= agora - timedelta(days=21)],
+        "outras": sorted([o for o in outras if _dt(o["publicado"]) >= agora - timedelta(days=JANELA_PAINEL)],
                          key=lambda o: o["publicado"], reverse=True),
         "destinos": sorted(destinos.values(), key=lambda d: d["ultima"], reverse=True),
         "totais": {"posts_lidos": len(todos), "passagens": len(passagens),
