@@ -5497,7 +5497,7 @@
 "titulo": "É Black! 50% OFF: o maior desconto da história dos Alertas do PP",
 "descricao": "<p>Começou a Black dos Alertas com 50% OFF no plano anual dos Alertas de Viagem, o maior desconto da história do PP! A oferta é válida até sexta-feira (27) e inclui os grupos Mundo Plus, Mundo VIP e Mundo Ultra. Use o cupom ‘BLACK50’ e receba as melhores oportunidades de voos com milhas diretamente no WhatsApp.</p>\n<p>O post <a href=\"https://passageirodeprimeira.com/e-black-50-off-o-maior-desconto-da-historia-dos-alertas-do-pp/\">É Black! 50% OFF: o maior desconto da história dos Alertas do PP</a> apareceu primeiro em <a href=\"https://passageirodeprimeira.com\">Passageiro de Primeira</a>.</p>\n",
 "link": "https://passageirodeprimeira.com/e-black-50-off-o-maior-desconto-da-historia-dos-alertas-do-pp/",
-"publicado": "2026-11-24T18:12:55+00:00",
+"publicado": "2026-11-24T22:30:54+00:00",
 "fonte": "Passageiro de Primeira"
 },
 "https://passageirodeprimeira.com/muito-bom-ganhe-ate-100-000-milhas-bonus-ao-pedir-o-cartao-latam-pass-itau-mastercard-black-ou-platinum/": {
@@ -10817,7 +10817,7 @@
 "titulo": "Black da UDM: aproveite 60% OFF para entrar no Mundo Avios",
 "descricao": "<p>Black da UDM: o curso Mundo Avios está com 60% OFF. Aprenda a usar Avios em programas como Iberia Club, British Airways Club, Qatar Privilege Club e Finnair Plus. Alunos da UDM e assinantes dos Alertas do PP têm 10% OFF extra.</p>\n<p>O post <a href=\"https://passageirodeprimeira.com/black-da-udm-aproveite-60-off-para-entrar-no-mundo-avios/\">Black da UDM: aproveite 60% OFF para entrar no Mundo Avios</a> apareceu primeiro em <a href=\"https://passageirodeprimeira.com\">Passageiro de Primeira</a>.</p>\n",
 "link": "https://passageirodeprimeira.com/black-da-udm-aproveite-60-off-para-entrar-no-mundo-avios/",
-"publicado": "2026-11-24T18:43:49+00:00",
+"publicado": "2026-11-24T21:50:27+00:00",
 "fonte": "Passageiro de Primeira"
 },
 "https://pontospravoar.com/black-friday-all-accor-reserve-hoteis-pet-friendly-sao-paulo-diarias-110-reais/": {
@@ -11065,7 +11065,247 @@
 "descricao": "Que tal aproveitar suas milhas para conhecer um novo destino pelo Brasil? Nossa equipe encontrou passagens aéreas nacionais a partir de 3 mil milhas LATAM Pass + taxas. Reunimos diferentes oportunidades para você planejar sua próxima viagem, gastando menos. Confira! Passagens nacionais no LATAM Pass Para garantir as suas passagens nacionais no LATAM Pass, siga estes&#8230;",
 "link": "https://pontospravoar.com/alerta-ppv-passagens-latam-pass-3-mil-milhas/",
 "publicado": "2026-11-23T22:00:49+00:00",
-"fonte": "Pontos pra Voar"
+"fonte": "Pontos pra Voar",
+"rotas": [
+{
+"origem": "MCP",
+"origem_txt": "Macapá (MCP)",
+"destino": "BEL",
+"destino_nome": "Belém",
+"milhas": 3273,
+"cabine": "Econômica",
+"programa": "LATAM Pass",
+"companhia": null,
+"data": "2027-02-15",
+"periodo": [
+"2027-02"
+]
+},
+{
+"origem": "BEL",
+"origem_txt": "Belém (BEL)",
+"destino": "MCP",
+"destino_nome": "Macapá",
+"milhas": 3273,
+"cabine": "Econômica",
+"programa": "LATAM Pass",
+"companhia": null,
+"data": "2027-02-17",
+"periodo": [
+"2027-02"
+]
+},
+{
+"origem": "FOR",
+"origem_txt": "Fortaleza (FOR)",
+"destino": "JDO",
+"destino_nome": "Juazeiro do Norte",
+"milhas": 3332,
+"cabine": "Econômica",
+"programa": "LATAM Pass",
+"companhia": null,
+"data": "2027-02-20",
+"periodo": [
+"2027-02"
+]
+},
+{
+"origem": "CWB",
+"origem_txt": "Curitiba (CWB)",
+"destino": "LDB",
+"destino_nome": "Londrina",
+"milhas": 3887,
+"cabine": "Econômica",
+"programa": "LATAM Pass",
+"companhia": null,
+"data": "2027-03-08",
+"periodo": [
+"2027-03"
+]
+},
+{
+"origem": "LDB",
+"origem_txt": "Londrina (LDB)",
+"destino": "CWB",
+"destino_nome": "Curitiba",
+"milhas": 3887,
+"cabine": "Econômica",
+"programa": "LATAM Pass",
+"companhia": null,
+"data": "2027-03-08",
+"periodo": [
+"2027-03"
+]
+},
+{
+"origem": "FLN",
+"origem_txt": "Florianópolis (FLN)",
+"destino": "POA",
+"destino_nome": "Porto Alegre",
+"milhas": 4159,
+"cabine": "Econômica",
+"programa": "LATAM Pass",
+"companhia": null,
+"data": "2027-02-16",
+"periodo": [
+"2027-02"
+]
+},
+{
+"origem": "POA",
+"origem_txt": "Porto Alegre (POA)",
+"destino": "FLN",
+"destino_nome": "Florianópolis",
+"milhas": 4159,
+"cabine": "Econômica",
+"programa": "LATAM Pass",
+"companhia": null,
+"data": "2027-02-15",
+"periodo": [
+"2027-02"
+]
+},
+{
+"origem": "VCP",
+"origem_txt": "Campinas (VCP)",
+"destino": "POA",
+"destino_nome": "Porto Alegre",
+"milhas": 4469,
+"cabine": "Econômica",
+"programa": "LATAM Pass",
+"companhia": null,
+"data": "2027-02-22",
+"periodo": [
+"2027-02"
+]
+},
+{
+"origem": "POA",
+"origem_txt": "Porto Alegre (POA)",
+"destino": "VCP",
+"destino_nome": "Campinas",
+"milhas": 4469,
+"cabine": "Econômica",
+"programa": "LATAM Pass",
+"companhia": null,
+"data": "2027-02-22",
+"periodo": [
+"2027-02"
+]
+},
+{
+"origem": "SAO",
+"origem_txt": "São Paulo (GRU)",
+"destino": "PFB",
+"destino_nome": "Passo Fundo",
+"milhas": 4572,
+"cabine": "Econômica",
+"programa": "LATAM Pass",
+"companhia": null,
+"data": "2027-02-17",
+"periodo": [
+"2027-02"
+]
+},
+{
+"origem": null,
+"origem_txt": "Passo Fundo (PFB)",
+"destino": "SAO",
+"destino_nome": "São Paulo",
+"milhas": 4572,
+"cabine": "Econômica",
+"programa": "LATAM Pass",
+"companhia": null,
+"data": "2027-02-17",
+"periodo": [
+"2027-02"
+]
+},
+{
+"origem": "SAO",
+"origem_txt": "São Paulo (GRU)",
+"destino": "UBA",
+"destino_nome": "Uberaba",
+"milhas": 4719,
+"cabine": "Econômica",
+"programa": "LATAM Pass",
+"companhia": null,
+"data": "2027-02-24",
+"periodo": [
+"2027-02"
+]
+},
+{
+"origem": null,
+"origem_txt": "Uberaba (UBA)",
+"destino": "SAO",
+"destino_nome": "São Paulo",
+"milhas": 4719,
+"cabine": "Econômica",
+"programa": "LATAM Pass",
+"companhia": null,
+"data": "2027-02-23",
+"periodo": [
+"2027-02"
+]
+},
+{
+"origem": "FOR",
+"origem_txt": "Fortaleza (FOR)",
+"destino": "PHB",
+"destino_nome": "Parnaíba",
+"milhas": 4956,
+"cabine": "Econômica",
+"programa": "LATAM Pass",
+"companhia": null,
+"data": "2027-02-25",
+"periodo": [
+"2027-02"
+]
+},
+{
+"origem": null,
+"origem_txt": "Parnaíba (PHB)",
+"destino": "FOR",
+"destino_nome": "Fortaleza",
+"milhas": 4956,
+"cabine": "Econômica",
+"programa": "LATAM Pass",
+"companhia": null,
+"data": "2027-02-25",
+"periodo": [
+"2027-02"
+]
+},
+{
+"origem": "VIX",
+"origem_txt": "Vitória (VIX)",
+"destino": "BSB",
+"destino_nome": "Brasília",
+"milhas": 4965,
+"cabine": "Econômica",
+"programa": "LATAM Pass",
+"companhia": null,
+"data": "2027-02-26",
+"periodo": [
+"2027-02"
+]
+},
+{
+"origem": "NVT",
+"origem_txt": "Navegantes (NVT)",
+"destino": "SAO",
+"destino_nome": "São Paulo",
+"milhas": 5446,
+"cabine": "Econômica",
+"programa": "LATAM Pass",
+"companhia": null,
+"data": "2027-02-22",
+"periodo": [
+"2027-02"
+]
+}
+]
 },
 "https://pontospravoar.com/black-friday-all-accor-reserve-hoteis-ibis-brasil-diarias-103-reais/": {
 "titulo": "Black Friday ALL Accor! Reserve hotéis ibis pelo Brasil com diárias a partir de R$ 103",
@@ -11762,11 +12002,11 @@
 ]
 },
 "https://pontospravoar.com/alerta-ppv-passagens-europa-62300-pontos-azul-fidelidade/": {
-"link": "https://pontospravoar.com/alerta-ppv-passagens-europa-62300-pontos-azul-fidelidade/",
-"fonte": "Pontos pra Voar",
 "titulo": "Alerta PPV! Passagens para a Europa a partir de 62.300 pontos Azul Fidelidade",
-"descricao": "Confira passagens para Lisboa, Porto e Madri a partir de 62.300 pontos Azul Fidelidade + taxas, com datas para viajar em novembro e dezembro!",
+"descricao": "Que tal aproveitar seus pontos para conhecer a Europa ainda este ano? No Alerta de Passagens PPV de hoje, nossa equipe selecionou oportunidades para viajar a Portugal e Espanha, com voos para Lisboa, Porto e Madri, utilizando pontos Azul Fidelidade, com emissões a partir de 62.300 pontos + taxas. As opções incluem datas para viajar&#8230;",
+"link": "https://pontospravoar.com/alerta-ppv-passagens-europa-62300-pontos-azul-fidelidade/",
 "publicado": "2026-11-23T18:00:30+00:00",
+"fonte": "Pontos pra Voar",
 "rotas": [
 {
 "origem": "VCP",
@@ -12535,11 +12775,11 @@
 ]
 },
 "https://pontospravoar.com/alerta-ppv-resgate-passagens-internacionais-13350-pontos-taxas/": {
-"link": "https://pontospravoar.com/alerta-ppv-resgate-passagens-internacionais-13350-pontos-taxas/",
-"fonte": "Pontos pra Voar",
 "titulo": "Alerta PPV! Resgate passagens internacionais a partir de 13.350 pontos + taxas",
-"descricao": "Na edição do alerta de passagens PPV deste domingo, você confere 15 sugestões de passagens internacionais a partir de 13.350 pontos.",
+"descricao": "Na edição do alerta de passagens PPV deste domingo, você confere 15 sugestões de passagens internacionais a partir de 13.350 pontos + taxas para viajar nos próximos meses. Abaixo, veja as disponibilidades e aproveite. Passagens internacionais Nessa tabela, mesclamos algumas emissões dos três programas de companhias aéreas nacionais para você aproveitar e emitir sua próxima&#8230;",
+"link": "https://pontospravoar.com/alerta-ppv-resgate-passagens-internacionais-13350-pontos-taxas/",
 "publicado": "2026-11-22T16:04:38+00:00",
+"fonte": "Pontos pra Voar",
 "rotas": [
 {
 "origem": "POA",
@@ -13213,5 +13453,828 @@
 ]
 }
 ]
+},
+"https://passageirodeprimeira.com/latam-tem-passagens-para-destinos-de-carnaval-a-partir-de-r-117-ou-4-mil-milhas-taxas/": {
+"titulo": "LATAM tem passagens para destinos de Carnaval a partir de R$ 117 ou 4 mil milhas + taxas",
+"descricao": "<p>A LATAM está com passagens para destinos de Carnaval a partir de R$ 117,75 ou 4.647 milhas + taxas por trecho. Além disso, até hoje (24), você pode transferir pontos Livelo para o LATAM Pass com 27% de bônus, facilitando ainda mais sua viagem. Não perca essa oportunidade de curtir a folia!</p>\n<p>O post <a href=\"https://passageirodeprimeira.com/latam-tem-passagens-para-destinos-de-carnaval-a-partir-de-r-117-ou-4-mil-milhas-taxas/\">LATAM tem passagens para destinos de Carnaval a partir de R$ 117 ou 4 mil milhas + taxas</a> apareceu primeiro em <a href=\"https://passageirodeprimeira.com\">Passageiro de Primeira</a>.</p>\n",
+"link": "https://passageirodeprimeira.com/latam-tem-passagens-para-destinos-de-carnaval-a-partir-de-r-117-ou-4-mil-milhas-taxas/",
+"publicado": "2026-11-24T22:10:21+00:00",
+"fonte": "Passageiro de Primeira"
+},
+"https://passageirodeprimeira.com/voe-de-sao-paulo-para-dubai-a-partir-de-r-2-295-ou-153-mil-pontos-azul-taxas/": {
+"titulo": "Voe de São Paulo para Dubai a partir de R$ 2.295 ou 153 mil pontos Azul + taxas",
+"descricao": "<p>Encontramos disponibilidade de bilhetes ida e volta entre São Paulo (GRU) e Dubai (DXB) a partir de 153.000 pontos Azul Fidelidade + taxas por trecho com a Azul. Além disso, caso você não tenha pontos para realizar a emissão, é possível comprar pontos Azul com até 320% de bônus e emitir o trecho a partir de R$ 2.295 + taxas.</p>\n<p>O post <a href=\"https://passageirodeprimeira.com/voe-de-sao-paulo-para-dubai-a-partir-de-r-2-295-ou-153-mil-pontos-azul-taxas/\">Voe de São Paulo para Dubai a partir de R$ 2.295 ou 153 mil pontos Azul + taxas</a> apareceu primeiro em <a href=\"https://passageirodeprimeira.com\">Passageiro de Primeira</a>.</p>\n",
+"link": "https://passageirodeprimeira.com/voe-de-sao-paulo-para-dubai-a-partir-de-r-2-295-ou-153-mil-pontos-azul-taxas/",
+"publicado": "2026-11-24T21:10:50+00:00",
+"fonte": "Passageiro de Primeira"
+},
+"https://passageirodeprimeira.com/voe-para-sao-francisco-a-partir-de-r-1-372-ou-91-mil-pontos-azul-taxas/": {
+"titulo": "Voe para São Francisco a partir de R$ 1.372 ou 91 mil pontos Azul + taxas",
+"descricao": "<p>Encontramos disponibilidade de bilhetes ida e volta entre São Paulo (GRU) e São Francisco (SFO) a partir de 18.500 pontos Azul Fidelidade + taxas por trecho com a Azul. Além disso, caso você não tenha pontos para realizar a emissão, é possível comprar pontos Azul com até 320% de bônus e emitir o trecho a partir de R$ 1.372,50 + taxas.</p>\n<p>O post <a href=\"https://passageirodeprimeira.com/voe-para-sao-francisco-a-partir-de-r-1-372-ou-91-mil-pontos-azul-taxas/\">Voe para São Francisco a partir de R$ 1.372 ou 91 mil pontos Azul + taxas</a> apareceu primeiro em <a href=\"https://passageirodeprimeira.com\">Passageiro de Primeira</a>.</p>\n",
+"link": "https://passageirodeprimeira.com/voe-para-sao-francisco-a-partir-de-r-1-372-ou-91-mil-pontos-azul-taxas/",
+"publicado": "2026-11-24T20:10:17+00:00",
+"fonte": "Passageiro de Primeira"
+},
+"https://passageirodeprimeira.com/ultimo-dia-livelo-oferece-ate-30-off-em-passagens-para-italia-30-de-pointsback/": {
+"titulo": "Último dia! Livelo oferece até 30% off em passagens para Itália + 30% de pointsback",
+"descricao": "<p>Último dia! A Livelo está oferecendo 30% de desconto na emissão de passagens para a Itália, além de 30% de pointsback para correntistas Bradesco. A promoção é válida até hoje (24) e pode resultar em uma economia de até 51% no custo final em pontos.</p>\n<p>O post <a href=\"https://passageirodeprimeira.com/ultimo-dia-livelo-oferece-ate-30-off-em-passagens-para-italia-30-de-pointsback/\">Último dia! Livelo oferece até 30% off em passagens para Itália + 30% de pointsback</a> apareceu primeiro em <a href=\"https://passageirodeprimeira.com\">Passageiro de Primeira</a>.</p>\n",
+"link": "https://passageirodeprimeira.com/ultimo-dia-livelo-oferece-ate-30-off-em-passagens-para-italia-30-de-pointsback/",
+"publicado": "2026-11-24T19:32:30+00:00",
+"fonte": "Passageiro de Primeira"
+},
+"https://passageirodeprimeira.com/shopping-latam-pass-oferece-ate-12-milhas-real-gasto-magalu/": {
+"titulo": "Shopping LATAM Pass oferece até 12 milhas por real gasto na Magalu",
+"descricao": "<p>O Shopping LATAM Pass está oferecendo até 12 milhas por real gasto para compras em toda a loja da Magalu. A oferta é válida até amanhã (25). Confira!</p>\n<p>O post <a href=\"https://passageirodeprimeira.com/shopping-latam-pass-oferece-ate-12-milhas-real-gasto-magalu/\">Shopping LATAM Pass oferece até 12 milhas por real gasto na Magalu</a> apareceu primeiro em <a href=\"https://passageirodeprimeira.com\">Passageiro de Primeira</a>.</p>\n",
+"link": "https://passageirodeprimeira.com/shopping-latam-pass-oferece-ate-12-milhas-real-gasto-magalu/",
+"publicado": "2026-11-24T21:30:59+00:00",
+"fonte": "Passageiro de Primeira"
+},
+"https://passageirodeprimeira.com/hospede-se-miami-ate-54-desconto-10-off-nosso-cupom/": {
+"titulo": "Hospede-se em Miami com até 54% de desconto + 10% OFF com nosso cupom",
+"descricao": "<p>Nesta matéria, vamos apresentar 5 hotéis em Miami com até 54% de desconto na Hoteis.com! Na oferta, ainda é possível aproveitar o cupom de 10% de desconto exclusivo do PP, além de parcelar em até 12x sem juros. Confira!</p>\n<p>O post <a href=\"https://passageirodeprimeira.com/hospede-se-miami-ate-54-desconto-10-off-nosso-cupom/\">Hospede-se em Miami com até 54% de desconto + 10% OFF com nosso cupom</a> apareceu primeiro em <a href=\"https://passageirodeprimeira.com\">Passageiro de Primeira</a>.</p>\n",
+"link": "https://passageirodeprimeira.com/hospede-se-miami-ate-54-desconto-10-off-nosso-cupom/",
+"publicado": "2026-11-24T20:50:28+00:00",
+"fonte": "Passageiro de Primeira"
+},
+"https://passageirodeprimeira.com/ultimas-horas-receber-ate-320-bonus-compra-pontos-azul-fidelidade/": {
+"titulo": "Últimas horas para receber até 320% de bônus na compra de pontos do Azul Fidelidade",
+"descricao": "<p>Essas são as últimas horas para você receber até 320% de bônus na compra de pontos do Azul Fidelidade. Na oferta, é possível adquirir até 14.700.000 pontos, considerando o bônus final. Além disso, portadores dos cartões Azul Itaú são elegíveis a um desconto adicional de 10%. A oferta é válida até hoje (24).</p>\n<p>O post <a href=\"https://passageirodeprimeira.com/ultimas-horas-receber-ate-320-bonus-compra-pontos-azul-fidelidade/\">Últimas horas para receber até 320% de bônus na compra de pontos do Azul Fidelidade</a> apareceu primeiro em <a href=\"https://passageirodeprimeira.com\">Passageiro de Primeira</a>.</p>\n",
+"link": "https://passageirodeprimeira.com/ultimas-horas-receber-ate-320-bonus-compra-pontos-azul-fidelidade/",
+"publicado": "2026-11-24T20:30:35+00:00",
+"fonte": "Passageiro de Primeira"
+},
+"https://passageirodeprimeira.com/dolar-em-queda-ganhe-ate-55-de-cashback-na-primeira-conversao-e-acesso-ao-nomad-lounge/": {
+"titulo": "Dólar em queda! Ganhe até 5,5% de cashback na primeira conversão e acesso ao Nomad Lounge",
+"descricao": "<p>Alerta de queda do dólar! Ao abrir sua conta na Nomad e usar o código \"YF26PP\", você garante 5,5% de cashback na primeira conversão de até US$ 1.000 ou € 1.000, com limite de até US$ 55. Além disso, você terá acesso ao Nomad Lounge no Aeroporto de Guarulhos até 31 de janeiro de 2027.</p>\n<p>O post <a href=\"https://passageirodeprimeira.com/dolar-em-queda-ganhe-ate-55-de-cashback-na-primeira-conversao-e-acesso-ao-nomad-lounge/\">Dólar em queda! Ganhe até 5,5% de cashback na primeira conversão e acesso ao Nomad Lounge</a> apareceu primeiro em <a href=\"https://passageirodeprimeira.com\">Passageiro de Primeira</a>.</p>\n",
+"link": "https://passageirodeprimeira.com/dolar-em-queda-ganhe-ate-55-de-cashback-na-primeira-conversao-e-acesso-ao-nomad-lounge/",
+"publicado": "2026-11-24T19:09:24+00:00",
+"fonte": "Passageiro de Primeira"
+},
+"https://passageirodeprimeira.com/bradesco-lanca-nova-versao-do-amex-the-platinum-card-em-metal-com-ate-4-pontos-por-dolar/": {
+"titulo": "Bradesco lança nova versão do Amex The Platinum Card em metal com até 4 pontos por dólar",
+"descricao": "<p>O Bradesco lançará em 1º de dezembro de 2026 uma nova versão do The Platinum Card® American Express em metal, com até 4 pontos Livelo por dólar. O cartão oferece benefícios como acesso a salas VIP e seguro viagem completo, sendo exclusivo para clientes dos segmentos Bradesco Prime, Principal e Private Bank. Além disso, os pontos acumulados não expiram, garantindo mais vantagens para os usuários.</p>\n<p>O post <a href=\"https://passageirodeprimeira.com/bradesco-lanca-nova-versao-do-amex-the-platinum-card-em-metal-com-ate-4-pontos-por-dolar/\">Bradesco lança nova versão do Amex The Platinum Card em metal com até 4 pontos por dólar</a> apareceu primeiro em <a href=\"https://passageirodeprimeira.com\">Passageiro de Primeira</a>.</p>\n",
+"link": "https://passageirodeprimeira.com/bradesco-lanca-nova-versao-do-amex-the-platinum-card-em-metal-com-ate-4-pontos-por-dolar/",
+"publicado": "2026-11-24T19:47:02+00:00",
+"fonte": "Passageiro de Primeira"
+},
+"https://pontospravoar.com/radar-ppv-resumo-promocoes-acumulo-transferencia-pontos-dia-24-novembro-2026/": {
+"titulo": "Radar PPV! Resumo das promoções de acúmulo e transferência de pontos do dia 24 de novembro de 2026",
+"descricao": "A terça-feira traz novas oportunidades para quem acompanha o universo de pontos, milhas e viagens. Nossa equipe reuniu os principais destaques do dia para facilitar sua busca por boas promoções. Confira o Radar PPV! Promoções de acúmulo de pontos ¹ pontos por dólar. Promoções de transferência de pontos Compra de pontos com desconto Compra de&#8230;",
+"link": "https://pontospravoar.com/radar-ppv-resumo-promocoes-acumulo-transferencia-pontos-dia-24-novembro-2026/",
+"publicado": "2026-11-24T23:00:38+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/vai-acabar-transfira-pontos-livelo-latam-pass-27-porcento-bonus/": {
+"titulo": "Vai acabar! Transfira pontos da Livelo para o LATAM Pass com 27% de bônus",
+"descricao": "A promoção da LATAM Friday entrou nas últimas horas! Apenas até as 23h59, você pode transferir seus pontos da Livelo para o LATAM Pass com 27% de bônus. Além disso, clientes que realizarem a primeira transferência garantem 2.000 milhas extras. Abaixo, veja como aproveitar antes que acabe! LATAM Pass e Livelo Para esta campanha, a&#8230;",
+"link": "https://pontospravoar.com/vai-acabar-transfira-pontos-livelo-latam-pass-27-porcento-bonus/",
+"publicado": "2026-11-24T22:36:38+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/segue-valendo-yellow-friday-nomad-oferece-ate-55-porcento-cashback-conversao-5gb-internet-gratis/": {
+"titulo": "Segue valendo! Yellow Friday da Nomad oferece até 5,5% de cashback na conversão e 5GB de internet grátis",
+"descricao": "A Yellow Friday da Nomad segue valendo! A promoção oferece cashback das taxas da primeira conversão de moeda e 5 GB de internet gratuita no Nomad Chip para novos clientes. Para garantir os benefícios até 30 de novembro de 2026 (ou enquanto durarem os cupons disponíveis), é necessário abrir a conta utilizando o código de&#8230;",
+"link": "https://pontospravoar.com/segue-valendo-yellow-friday-nomad-oferece-ate-55-porcento-cashback-conversao-5gb-internet-gratis/",
+"publicado": "2026-11-24T22:00:51+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/ultimas-horas-compre-pontos-azul-fidelidade-ate-320-porcento-bonus/": {
+"titulo": "Últimas horas: Compre pontos Azul Fidelidade com até 320% de bônus",
+"descricao": "Últimas horas para aproveitar! O Azul Fidelidade está com uma promoção para quem deseja turbinar o saldo de pontos. Hoje é o último dia para comprar pontos com até 320% de bônus. Confira os detalhes e aproveite a oportunidade! Azul Fidelidade oferece até 320% de bônus na compra de pontos 320% de bônus – assinantes&#8230;",
+"link": "https://pontospravoar.com/ultimas-horas-compre-pontos-azul-fidelidade-ate-320-porcento-bonus/",
+"publicado": "2026-11-24T21:30:18+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/alerta-ppv-passagens-argentina-16-mil-milhas-latam-pass/": {
+"titulo": "Alerta PPV! Passagens para Argentina a partir de 16 mil milhas LATAM Pass",
+"descricao": "Que tal aproveitar esta terça-feira para planejar sua próxima viagem para a Argentina usando milhas? O alerta de passagens PPV traz novas oportunidades pelo LATAM Pass, com passagens para diferentes destinos no país a partir de 16 mil milhas + taxas. Confira as opções selecionadas e aproveite para pesquisar sua próxima viagem! Passagens internacionais no&#8230;",
+"link": "https://pontospravoar.com/alerta-ppv-passagens-argentina-16-mil-milhas-latam-pass/",
+"publicado": "2026-11-24T21:00:21+00:00",
+"fonte": "Pontos pra Voar",
+"rotas": [
+{
+"origem": "FLN",
+"origem_txt": "Florianópolis (FLN)",
+"destino": "BUE",
+"destino_nome": "Buenos Aires",
+"milhas": 17800,
+"cabine": "Econômica",
+"programa": "LATAM Pass",
+"companhia": null,
+"data": "2027-02-17",
+"periodo": [
+"2027-02"
+]
+},
+{
+"origem": "POA",
+"origem_txt": "Porto Alegre (POA)",
+"destino": "BUE",
+"destino_nome": "Buenos Aires",
+"milhas": 23615,
+"cabine": "Econômica",
+"programa": "LATAM Pass",
+"companhia": null,
+"data": "2027-02-23",
+"periodo": [
+"2027-02"
+]
+},
+{
+"origem": "SAO",
+"origem_txt": "São Paulo (GRU)",
+"destino": "BUE",
+"destino_nome": "Buenos Aires",
+"milhas": 23634,
+"cabine": "Econômica",
+"programa": "LATAM Pass",
+"companhia": null,
+"data": "2027-03-07",
+"periodo": [
+"2027-03"
+]
+},
+{
+"origem": "REC",
+"origem_txt": "Recife (REC)",
+"destino": "BUE",
+"destino_nome": "Buenos Aires",
+"milhas": 23968,
+"cabine": "Econômica",
+"programa": "LATAM Pass",
+"companhia": null,
+"data": "2027-03-07",
+"periodo": [
+"2027-03"
+]
+},
+{
+"origem": "RIO",
+"origem_txt": "Rio de Janeiro (GIG)",
+"destino": "BUE",
+"destino_nome": "Buenos Aires",
+"milhas": 27492,
+"cabine": "Econômica",
+"programa": "LATAM Pass",
+"companhia": null,
+"data": "2027-02-19",
+"periodo": [
+"2027-02"
+]
+},
+{
+"origem": "RIO",
+"origem_txt": "Rio de Janeiro (GIG)",
+"destino": "BUE",
+"destino_nome": "Buenos Aires",
+"milhas": 29025,
+"cabine": "Econômica",
+"programa": "LATAM Pass",
+"companhia": null,
+"data": "2027-02-16",
+"periodo": [
+"2027-02"
+]
+},
+{
+"origem": "CNF",
+"origem_txt": "Belo Horizonte (CNF)",
+"destino": "BUE",
+"destino_nome": "Buenos Aires",
+"milhas": 32779,
+"cabine": "Econômica",
+"programa": "LATAM Pass",
+"companhia": null,
+"data": "2027-02-16",
+"periodo": [
+"2027-02"
+]
+},
+{
+"origem": "SAO",
+"origem_txt": "São Paulo (GRU)",
+"destino": "COR",
+"destino_nome": "Córdoba",
+"milhas": 33132,
+"cabine": "Econômica",
+"programa": "LATAM Pass",
+"companhia": null,
+"data": "2027-03-17",
+"periodo": [
+"2027-03"
+]
+},
+{
+"origem": "SAO",
+"origem_txt": "São Paulo (GRU)",
+"destino": "ROS",
+"destino_nome": "Rosario",
+"milhas": 33484,
+"cabine": "Econômica",
+"programa": "LATAM Pass",
+"companhia": null,
+"data": "2027-02-17",
+"periodo": [
+"2027-02"
+]
+},
+{
+"origem": null,
+"origem_txt": "Cabo Frio (CFB)",
+"destino": "BUE",
+"destino_nome": "Buenos Aires",
+"milhas": 34830,
+"cabine": "Econômica",
+"programa": "LATAM Pass",
+"companhia": null,
+"data": "2027-02-18",
+"periodo": [
+"2027-02"
+]
+}
+]
+},
+"https://pontospravoar.com/segue-valendo-clube-smiles-ate-50000-milhas-hora-novos-assinantes/": {
+"titulo": "Segue valendo: Clube Smiles com até 50.000 milhas na hora para novos assinantes",
+"descricao": "Está pensando em assinar o clube? A promoção da Smiles segue valendo e oferece aos novos clientes até 50.000 milhas na hora, de acordo com o plano escolhido. A oferta é válida até 30 de novembro de 2026. Confira os principais detalhes e veja como aproveitar. Clube Smiles em promoção Nesta oferta, o bônus varia&#8230;",
+"link": "https://pontospravoar.com/segue-valendo-clube-smiles-ate-50000-milhas-hora-novos-assinantes/",
+"publicado": "2026-11-24T20:30:12+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/confira-10-ofertas-shopping-smiles-podem-render-passagem-aerea/": {
+"titulo": "Confira 10 ofertas no Shopping Smiles que podem render uma passagem aérea",
+"descricao": "Se você está pensando em comprar um novo smartphone, eletroportáteis ou eletrodomésticos, esta pode ser uma boa oportunidade para turbinar seu saldo de milhas! O Shopping Smiles, em parceria com o Magalu, está oferecendo até 6 milhas por real gasto na compra de produtos selecionados. Confira as condições da campanha e saiba como aproveitar antes&#8230;",
+"link": "https://pontospravoar.com/confira-10-ofertas-shopping-smiles-podem-render-passagem-aerea/",
+"publicado": "2026-11-24T20:00:40+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/transfira-pontos-premmia-azul-fidelidade-ate-120-porcento-bonus/": {
+"titulo": "Transfira pontos do Premmia para o Azul Fidelidade com até 120% de bônus",
+"descricao": "O Azul Fidelidade, em parceria com o Premmia, programa de fidelidade da Petrobras, liberou novamente a promoção que oferece até 120% de bônus na transferência de pontos entre os programas. Além disso, os clientes podem aproveitar descontos em passagens aéreas, trocar pontos por Vale-Premmia e muito mais! A campanha é válida somente até o final&#8230;",
+"link": "https://pontospravoar.com/transfira-pontos-premmia-azul-fidelidade-ate-120-porcento-bonus/",
+"publicado": "2026-11-24T19:30:26+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/alerta-ppv-15-oportunidades-para-viajar-pelo-brasil-a-partir-de-5-900-milhas-smiles/": {
+"titulo": "Alerta PPV! 15 oportunidades para viajar pelo Brasil a partir de 5.900 milhas Smiles",
+"descricao": "Se você está planejando sua próxima viagem pelo Brasil, vale conferir as oportunidades que selecionamos! No Alerta de Passagens PPV desta terça-feira, nossa equipe reuniu diversas opções de voos nacionais com milhas Smiles, com emissões a partir de apenas 5.900 milhas + taxas. Confira os destinos, trechos e datas disponíveis e aproveite para organizar sua&#8230;",
+"link": "https://pontospravoar.com/alerta-ppv-15-oportunidades-para-viajar-pelo-brasil-a-partir-de-5-900-milhas-smiles/",
+"publicado": "2026-11-24T19:00:56+00:00",
+"fonte": "Pontos pra Voar",
+"rotas": [
+{
+"origem": "MCP",
+"origem_txt": "Macapá (MCP)",
+"destino": "BEL",
+"destino_nome": "Belém",
+"milhas": 6100,
+"cabine": "Econômica",
+"programa": "Smiles",
+"companhia": null,
+"data": "2027-01-23",
+"periodo": [
+"2027-01"
+]
+},
+{
+"origem": "POA",
+"origem_txt": "Porto Alegre (POA)",
+"destino": "FLN",
+"destino_nome": "Florianópolis",
+"milhas": 7700,
+"cabine": "Econômica",
+"programa": "Smiles",
+"companhia": null,
+"data": "2027-01-02",
+"periodo": [
+"2027-01"
+]
+},
+{
+"origem": "RIO",
+"origem_txt": "Rio de Janeiro (GIG)",
+"destino": "SJK",
+"destino_nome": "São José dos Campos",
+"milhas": 8600,
+"cabine": "Econômica",
+"programa": "Smiles",
+"companhia": null,
+"data": "2026-12-25",
+"periodo": [
+"2026-12"
+]
+},
+{
+"origem": "NVT",
+"origem_txt": "Navegantes (NVT)",
+"destino": "SAO",
+"destino_nome": "São Paulo",
+"milhas": 9300,
+"cabine": "Econômica",
+"programa": "Smiles",
+"companhia": null,
+"data": "2027-05-18",
+"periodo": [
+"2027-05"
+]
+},
+{
+"origem": "SAO",
+"origem_txt": "São Paulo (CGH)",
+"destino": "FLN",
+"destino_nome": "Florianópolis",
+"milhas": 12700,
+"cabine": "Econômica",
+"programa": "Smiles",
+"companhia": null,
+"data": "2027-04-05",
+"periodo": [
+"2027-04"
+]
+},
+{
+"origem": "FLN",
+"origem_txt": "Florianópolis (FLN)",
+"destino": "SAO",
+"destino_nome": "São Paulo",
+"milhas": 13000,
+"cabine": "Econômica",
+"programa": "Smiles",
+"companhia": null,
+"data": "2026-12-25",
+"periodo": [
+"2026-12"
+]
+},
+{
+"origem": "BSB",
+"origem_txt": "Brasília (BSB)",
+"destino": "RIO",
+"destino_nome": "Rio de Janeiro",
+"milhas": 14900,
+"cabine": "Econômica",
+"programa": "Smiles",
+"companhia": null,
+"data": "2027-04-07",
+"periodo": [
+"2027-04"
+]
+},
+{
+"origem": "VIX",
+"origem_txt": "Vitória (VIX)",
+"destino": "RIO",
+"destino_nome": "Rio de Janeiro",
+"milhas": 14900,
+"cabine": "Econômica",
+"programa": "Smiles",
+"companhia": null,
+"data": "2027-03-31",
+"periodo": [
+"2027-03"
+]
+},
+{
+"origem": "SAO",
+"origem_txt": "São Paulo (GRU)",
+"destino": "RIO",
+"destino_nome": "Rio de Janeiro",
+"milhas": 15300,
+"cabine": "Econômica",
+"programa": "Smiles",
+"companhia": null,
+"data": "2027-03-10",
+"periodo": [
+"2027-03"
+]
+},
+{
+"origem": "POA",
+"origem_txt": "Porto Alegre (POA)",
+"destino": "RIO",
+"destino_nome": "Rio de Janeiro",
+"milhas": 18000,
+"cabine": "Econômica",
+"programa": "Smiles",
+"companhia": null,
+"data": "2027-03-04",
+"periodo": [
+"2027-03"
+]
+},
+{
+"origem": "BSB",
+"origem_txt": "Brasília (BSB)",
+"destino": "SSA",
+"destino_nome": "Salvador",
+"milhas": 19000,
+"cabine": "Econômica",
+"programa": "Smiles",
+"companhia": null,
+"data": "2027-03-03",
+"periodo": [
+"2027-03"
+]
+},
+{
+"origem": "FOR",
+"origem_txt": "Fortaleza (FOR)",
+"destino": "SSA",
+"destino_nome": "Salvador",
+"milhas": 19200,
+"cabine": "Econômica",
+"programa": "Smiles",
+"companhia": null,
+"data": "2027-03-09",
+"periodo": [
+"2027-03"
+]
+},
+{
+"origem": "RIO",
+"origem_txt": "Rio de Janeiro (GIG)",
+"destino": "SSA",
+"destino_nome": "Salvador",
+"milhas": 21100,
+"cabine": "Econômica",
+"programa": "Smiles",
+"companhia": null,
+"data": "2027-03-02",
+"periodo": [
+"2027-03"
+]
+},
+{
+"origem": "GYN",
+"origem_txt": "Goiânia (GYN)",
+"destino": "SSA",
+"destino_nome": "Salvador",
+"milhas": 22400,
+"cabine": "Econômica",
+"programa": "Smiles",
+"companhia": null,
+"data": "2027-05-18",
+"periodo": [
+"2027-05"
+]
+},
+{
+"origem": "CNF",
+"origem_txt": "Belo Horizonte (CNF)",
+"destino": "SSA",
+"destino_nome": "Salvador",
+"milhas": 22600,
+"cabine": "Econômica",
+"programa": "Smiles",
+"companhia": null,
+"data": "2027-03-16",
+"periodo": [
+"2027-03"
+]
+}
+]
+},
+"https://pontospravoar.com/so-hoje-inter-shell-box-oferecem-ate-5-porcento-cashback-combustiveis/": {
+"titulo": "Só hoje! Inter e Shell Box oferecem até 5% de cashback em combustíveis",
+"descricao": "Segunda-feira é dia de economizar na hora de abastecer! O Inter, em parceria com o Shell Box, trouxe de volta a promoção que oferece até 5% de cashback em abastecimentos realizados nos postos participantes. Desta vez, os clientes podem receber 5% de cashback em combustíveis comuns ou 4% nos combustíveis da linha V-Power. A oferta&#8230;",
+"link": "https://pontospravoar.com/so-hoje-inter-shell-box-oferecem-ate-5-porcento-cashback-combustiveis/",
+"publicado": "2026-11-23T19:00:14+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/delta-reforca-voos-entre-brasil-e-estados-unidos-durante-a-alta-temporada/": {
+"titulo": "Delta reforça voos entre Brasil e Estados Unidos durante a alta temporada",
+"descricao": "A Delta Air Lines está reforçando os voos entre Brasil e Estados Unidos para a temporada de viagens de fim de ano e verão. A companhia retomou o voo sazonal entre Rio de Janeiro e Nova York e adicionou uma segunda frequência diária entre São Paulo e Atlanta. As operações estão programadas até 27 de&#8230;",
+"link": "https://pontospravoar.com/delta-reforca-voos-entre-brasil-e-estados-unidos-durante-a-alta-temporada/",
+"publicado": "2026-11-23T18:30:33+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/brasil-quer-discutir-mudancas-nas-regras-que-controlam-voos-internacionais/": {
+"titulo": "Brasil quer discutir mudanças nas regras que controlam voos internacionais",
+"descricao": "A Agência Nacional de Aviação Civil (Anac) quer levar à Organização da Aviação Civil Internacional (OACI) uma discussão sobre mudanças nas regras econômicas do transporte aéreo internacional, com foco na liberalização dos mercados e no aumento da conectividade entre países. Brasil propõe estudo sobre abertura do mercado aéreo A Agência Nacional de Aviação Civil (Anac)&#8230;",
+"link": "https://pontospravoar.com/brasil-quer-discutir-mudancas-nas-regras-que-controlam-voos-internacionais/",
+"publicado": "2026-11-23T17:30:16+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/mequi-friday-mcdonalds-oferece-10-pontos-livelo-real-gasto-combo-promocional/": {
+"titulo": "Méqui Friday! McDonald’s oferece 10 pontos Livelo por real gasto em combo promocional",
+"descricao": "A Méqui Friday chegou com uma oportunidade para quem deseja acumular pontos Livelo! Em parceria com o McDonald&#8217;s, o programa está oferecendo 10 pontos por real gasto na compra de uma McOferta Clássica + Sundae, exclusivamente pelo aplicativo do Méqui. McDonald&#8217;s oferece 10 pontos Livelo por real gasto Durante a campanha, os clientes poderão acumular&#8230;",
+"link": "https://pontospravoar.com/mequi-friday-mcdonalds-oferece-10-pontos-livelo-real-gasto-combo-promocional/",
+"publicado": "2026-11-23T17:00:37+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/conheca-o-calendario-de-feriados-2027-para-planejar-e-curtir-com-milhas-e-pontos/": {
+"titulo": "Conheça o calendário de feriados 2027 para planejar e curtir com milhas e pontos",
+"descricao": "O calendário de feriados 2027 traz boas oportunidades para quem deseja viajar e aproveitar melhor suas milhas e pontos. Dos dez feriados nacionais, sete caem em dias úteis, incluindo três que garantem finais de semana prolongados sem precisar de folga. Além disso, outras datas permitem emendar alguns dias de descanso e organizar viagens mais longas.&#8230;",
+"link": "https://pontospravoar.com/conheca-o-calendario-de-feriados-2027-para-planejar-e-curtir-com-milhas-e-pontos/",
+"publicado": "2026-11-23T16:30:00+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/voltou-smiles-oferece-ate-80-de-bonus-nas-transferencias-de-pontos-com-parceiros/": {
+"titulo": "Voltou! Smiles oferece até 80% de bônus nas transferências de pontos com parceiros",
+"descricao": "A oferta voltou! Como parte das promoções da Orange Friday, a Smiles liberou novamente sua campanha de transferência bonificada, oferecendo até 80% de bônus na transferência de pontos de todos os parceiros, exceto Esfera. A promoção é válida somente até amanhã, 24 de novembro, e pode ser uma oportunidade para aumentar seu saldo de milhas.&#8230;",
+"link": "https://pontospravoar.com/voltou-smiles-oferece-ate-80-de-bonus-nas-transferencias-de-pontos-com-parceiros/",
+"publicado": "2026-11-23T16:00:34+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/lufthansa-lanca-nova-edicao-de-colecao-de-roupas-que-brinca-com-regras-de-etiqueta-a-bordo/": {
+"titulo": "Lufthansa lança nova edição de coleção de roupas que brinca com regras de etiqueta a bordo",
+"descricao": "A pressa para embarcar, a disputa pelos apoios de braço, a reclinação inesperada do assento da frente e passageiros que se levantam antes mesmo de o avião chegar ao portão: são situações comuns em viagens aéreas que a Lufthansa decidiu transformar em uma coleção de roupas e acessórios com frases bem-humoradas sobre etiqueta a bordo. &#8230;",
+"link": "https://pontospravoar.com/lufthansa-lanca-nova-edicao-de-colecao-de-roupas-que-brinca-com-regras-de-etiqueta-a-bordo/",
+"publicado": "2026-11-23T15:30:55+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/black-friday-da-iberia-tem-voos-para-o-brasil-estados-unidos-e-europa-a-partir-de-24-euros/": {
+"titulo": "Black Friday da Iberia tem voos para o Brasil, Estados Unidos e Europa a partir de 24 euros",
+"descricao": "A Iberia lançou sua campanha de Black Friday com passagens promocionais para diversos destinos internacionais, incluindo Fortaleza e Recife, no Brasil. Os preços começam em 24 euros por trecho para voos dentro da Espanha, enquanto as tarifas para destinos brasileiros partem de 357 euros para Fortaleza e 381 euros para Recife. Voos para o Brasil&#8230;",
+"link": "https://pontospravoar.com/black-friday-da-iberia-tem-voos-para-o-brasil-estados-unidos-e-europa-a-partir-de-24-euros/",
+"publicado": "2026-11-23T15:00:53+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/oferta-relampago-clube-azul-5-000-anual-a-partir-de-r-45-por-mes-milheiro-a-partir-de-r-9/": {
+"titulo": "Oferta relâmpago! Clube Azul 5.000 anual a partir de R$ 45 por mês com milheiro a partir de R$ 9",
+"descricao": "O Azul Fidelidade está com uma oferta especial para quem deseja assinar o Clube Azul 5.000 na modalidade anual! Com a promoção, é possível garantir o plano por apenas R$ 50 por mês, ou R$ 45 mensais para pagamentos com o cartão Azul Itaú, alcançando um custo do milheiro a partir de R$ 9. A&#8230;",
+"link": "https://pontospravoar.com/oferta-relampago-clube-azul-5-000-anual-a-partir-de-r-45-por-mes-milheiro-a-partir-de-r-9/",
+"publicado": "2026-11-23T14:22:58+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/blackissima-esfera-oferece-ate-14-pontos-por-real-em-lojas-parceiras/": {
+"titulo": "Blackíssima! Esfera oferece até 14 pontos por real em lojas parceiras",
+"descricao": "A semana da Black Friday começou com diversas oportunidades para acumular pontos na Esfera! O programa está oferecendo até 14 pontos por real gasto em compras realizadas nas lojas parceiras, incluindo marcas de diferentes categorias. Uma boa oportunidade para aproveitar as compras da Black Friday e ainda aumentar seu saldo de pontos. Confira a seguir&#8230;",
+"link": "https://pontospravoar.com/blackissima-esfera-oferece-ate-14-pontos-por-real-em-lojas-parceiras/",
+"publicado": "2026-11-23T14:00:26+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/aeroportos-brasileiros-sao-destaque-em-ranking-dos-melhores-aeroportos-do-mundo/": {
+"titulo": "Aeroportos brasileiros são destaque em ranking dos melhores aeroportos do mundo",
+"descricao": "Quatro aeroportos brasileiros conquistaram posições de destaque no ranking dos melhores aeroportos do mundo, divulgado pela revista norte-americana TIME. Os terminais de Curitiba, Florianópolis, Brasília e Belo Horizonte aparecem entre os dez melhores de suas respectivas categorias. O principal destaque ficou com Curitiba, que alcançou a segunda colocação mundial entre os aeroportos de pequeno porte.&#8230;",
+"link": "https://pontospravoar.com/aeroportos-brasileiros-sao-destaque-em-ranking-dos-melhores-aeroportos-do-mundo/",
+"publicado": "2026-11-23T13:30:10+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/aproveite-latam-pass-oferece-27-porcento-bonus-transferencia-pontos-livelo/": {
+"titulo": "Aproveite! LATAM Pass oferece 27% de bônus na transferência de pontos da Livelo",
+"descricao": "A Black Friday chegou com uma nova oportunidade para acumular milhas! O LATAM Pass, em parceria com a Livelo, está oferecendo 27% de bônus na transferência de pontos entre os programas. Além disso, os clientes que realizarem sua primeira transferência da Livelo para o LATAM Pass poderão receber 2.000 milhas extras. A promoção é válida&#8230;",
+"link": "https://pontospravoar.com/aproveite-latam-pass-oferece-27-porcento-bonus-transferencia-pontos-livelo/",
+"publicado": "2026-11-23T12:59:48+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/black-friday-all-accor-garanta-hospedagem-ate-50-porcento-desconto/": {
+"titulo": "Black Friday ALL Accor! Garanta sua hospedagem com até 50% de desconto",
+"descricao": "Seguindo com as ofertas de Black Friday do ALL Accor, os associados do programa podem garantir até 50% de desconto na reserva de hotéis para viagens até dezembro de 2027. A seguir, veja todos os detalhes e não deixe para a última hora! Hotéis ALL Accor com até 50% de desconto Hotéis no Brasil e&#8230;",
+"link": "https://pontospravoar.com/black-friday-all-accor-garanta-hospedagem-ate-50-porcento-desconto/",
+"publicado": "2026-11-23T12:30:14+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/turkish-airlines-oferece-20-de-desconto-em-voos-internacionais/": {
+"titulo": "Turkish Airlines oferece 20% de desconto em voos internacionais",
+"descricao": "A Turkish Airlines está oferecendo 20% de desconto na tarifa-base de passagens de ida e volta na classe econômica para destinos internacionais. A promoção é válida para compras realizadas até 26 de novembro de 2026, com viagens programadas até 31 de maio de 2027, mediante utilização do código promocional SKYSTART. Como funciona a promoção da&#8230;",
+"link": "https://pontospravoar.com/turkish-airlines-oferece-20-de-desconto-em-voos-internacionais/",
+"publicado": "2026-11-23T12:07:58+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/black-friday-all-accor-garanta-assinatura-all-signature-ate-40-porcento-desconto/": {
+"titulo": "Black Friday ALL Accor! Garanta sua assinatura do ALL Signature com até 40% de desconto",
+"descricao": "Aproveite! Começou a Black Friday ALL Accor e, durante o período promocional, é possível garantir sua assinatura do ALL Signature com até 40% de desconto, maior desconto oferecido neste ano. A seguir, confira os principais detalhes desta oferta válida até o dia 2 de dezembro. Assine o ALL Signature com até 40% desconto Nesta oferta, os&#8230;",
+"link": "https://pontospravoar.com/black-friday-all-accor-garanta-assinatura-all-signature-ate-40-porcento-desconto/",
+"publicado": "2026-11-23T11:00:22+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/castelos-em-sao-paulo-para-visitar-dicas/": {
+"titulo": "Tem vídeo novo no YouTube: Conheça 3 castelos em São Paulo para visitar",
+"descricao": "Tem vídeo novo do Pontos pra Voar no YouTube! No vídeo de hoje, o Welerson Silva indica 3 castelos em São Paulo abertos à visitação, explicando o estilo arquitetônico, como agendar e quanto custa conhecer cada um. Conheça 3 castelos em São Paulo para visitar Você sabia que não precisa atravessar o oceano para conhecer&#8230;",
+"link": "https://pontospravoar.com/castelos-em-sao-paulo-para-visitar-dicas/",
+"publicado": "2026-11-22T21:00:54+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/saiba-quais-documentos-sao-exigidos-para-abrir-sua-conta-internacional-em-minutos/": {
+"titulo": "Saiba quais documentos são exigidos para abrir sua conta internacional em minutos",
+"descricao": "Conhecer os documentos para abrir conta na ARQ facilita muito a vida de quem deseja iniciar o cadastro hoje, mesmo sem enfrentar papelada ou processos demorados. Em resumo, o procedimento ocorre 100% pelo aplicativo e solicita apenas um documento oficial brasileiro com foto, dispensando comprovante de renda ou passaporte obrigatório. Por que o processo dispensa&#8230;",
+"link": "https://pontospravoar.com/saiba-quais-documentos-sao-exigidos-para-abrir-sua-conta-internacional-em-minutos/",
+"publicado": "2026-11-22T20:00:23+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/emirates-comeca-reforma-de-seus-lounges-em-dubai/": {
+"titulo": "Emirates começa reforma de seus lounges em Dubai",
+"descricao": "Quem voa na primeira classe da Emirates e embarca no Aeroporto de Dubai já encontra um lounge renovado. Desde quarta-feira (18), os passageiros da First Class que partem do Saguão B do Terminal 3 do Aeroporto Internacional de Dubai (DXB) usam um lounge recém-inaugurado. A abertura é a primeira parte visível de um programa de&#8230;",
+"link": "https://pontospravoar.com/emirates-comeca-reforma-de-seus-lounges-em-dubai/",
+"publicado": "2026-11-22T19:00:00+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/rio-grande-norte-lidera-crescimento-turismo-internacional-brasil/": {
+"titulo": "Rio Grande do Norte lidera crescimento do turismo internacional no Brasil",
+"descricao": "Nenhum estado brasileiro cresceu tanto com o turismo internacional, proporcionalmente, quanto o Rio Grande do Norte em 2026. Entre janeiro e outubro, o turismo internacional no RN cresceu 128,8%. O número de chegadas passou de 25.967, no mesmo período de 2025, para 59.411 neste ano. Bem à frente dos vizinhos Em números absolutos, são 33.444&#8230;",
+"link": "https://pontospravoar.com/rio-grande-norte-lidera-crescimento-turismo-internacional-brasil/",
+"publicado": "2026-11-22T18:00:29+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/semaninha-fraca-semana-do-milheiro-16-a-22-novembro/": {
+"titulo": "Semaninha fraca! Semana do Milheiro 16 a 22 de novembro",
+"descricao": "Estamos de volta em mais um domingo para uma edição especial da Semana do Milheiro. E, infelizmente, meus amigos, não por algo positivo. Mas é que essa semana foi tão fraca que preciso ser honesto com vocês: simplesmente não existem cinco notícias relevantes para entrarem na nossa disputa. Então, para não forçar (demais), teremos uma&#8230;",
+"link": "https://pontospravoar.com/semaninha-fraca-semana-do-milheiro-16-a-22-novembro/",
+"publicado": "2026-11-22T17:00:19+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/world-of-hyatt-tera-novos-milestone-rewards-flexibilidade/": {
+"titulo": "World of Hyatt terá novos Milestone Rewards e mais flexibilidade",
+"descricao": "World of Hyatt terá novos Milestone Rewards e mais flexibilidade a partir de janeiro. As mudanças incluem novos prêmios por marcos, possibilidade de combinar benefícios na mesma reserva e novas recompensas ligadas à Delta Air Lines. World of Hyatt O World of Hyatt anunciou uma série de mudanças para 2027, com foco em ampliar a&#8230;",
+"link": "https://pontospravoar.com/world-of-hyatt-tera-novos-milestone-rewards-flexibilidade/",
+"publicado": "2026-11-22T15:00:24+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/urban-lounge-inaugura-sala-vip-no-terminal-t3-do-aeroporto-de-guarulhos/": {
+"titulo": "Urban Lounge inaugura sala VIP no Terminal T3 do Aeroporto de Guarulhos",
+"descricao": "A Urban Lounge &#38; Work ganhou uma nova sala VIP de 200 m² no Terminal 3 do Aeroporto de Guarulhos. O espaço funciona 24 horas, fica antes do raio-x e aceita Priority Pass e LoungeKey. O diferencial é que a sala fica na área pública do aeroporto, tornando-se uma opção de descanso para passageiros em&#8230;",
+"link": "https://pontospravoar.com/urban-lounge-inaugura-sala-vip-no-terminal-t3-do-aeroporto-de-guarulhos/",
+"publicado": "2026-11-22T14:00:41+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/ultimo-dia-azul-fidelidade-oferece-ate-12-pontos-real-compras-renner/": {
+"titulo": "Último dia! Azul Fidelidade oferece até 12 pontos por real em compras na Renner",
+"descricao": "Pensando em rebivar o guarda-roupa? Hoje é o último dia para aproveitar a promoção do Azul Fidelidade, em parceria com a Renner, oferecendo até 12 pontos por real gasto em compras realizadas pelo site da varejista. Vamos aos detalhes! Azul Fidelidade e Renner O acúmulo turbinado de pontos está definido da seguinte maneira: 12 pontos –&#8230;",
+"link": "https://pontospravoar.com/ultimo-dia-azul-fidelidade-oferece-ate-12-pontos-real-compras-renner/",
+"publicado": "2026-11-22T13:00:56+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/american-airlines-deixa-oferecer-primeira-classe-voos-internacionais/": {
+"titulo": "⁠American Airlines deixa de oferecer primeira classe em voos internacionais",
+"descricao": "A American Airlines deixou de vender a primeira classe nos B777-300ER, para viagens a partir de 19 de novembro. Com isso, nenhuma das companhia aéreas dos Estados Unidos oferece mais a primeira classe em seus voos internacionais. Inclusive, a American opera com aeronaves deste modelo em rotas a partir de São Paulo. American Airlines encerra&#8230;",
+"link": "https://pontospravoar.com/american-airlines-deixa-oferecer-primeira-classe-voos-internacionais/",
+"publicado": "2026-11-22T12:00:52+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/nordeste-brasil-encontre-hoteis-diarias-199-reais/": {
+"titulo": "Nordeste do Brasil: encontre hotéis com diárias a partir de R$ 199",
+"descricao": "Se você está pensando em viajar pelo Nordeste, vale a pena conferir os preços das hospedagens antes de definir o destino. Encontramos hotéis em diferentes pontos da região com diárias a partir de R$ 199. Veja a seleção e escolha sua próxima estadia. Hotéis Accor no Nordeste Abaixo, você confere a lista de hotéis. Para&#8230;",
+"link": "https://pontospravoar.com/nordeste-brasil-encontre-hoteis-diarias-199-reais/",
+"publicado": "2026-11-22T11:05:55+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/united-proibe-agentes-ia-comprar-passagens/": {
+"titulo": "United Airlines proíbe agentes de IA de comprar passagens",
+"descricao": "A United Airlines recentemente alterou seu contrato de transporte a fim de proibir que agentes de inteligência artificial (IA) comprem, alterem ou atendam bilhetes. Essa mudança vem de encontro com a tendência do desenvolvimento tecnológico e da IA, cada vez mais presentes nos processos de planejamento e preparação de viagens. Além da United, a Citi&#8230;",
+"link": "https://pontospravoar.com/united-proibe-agentes-ia-comprar-passagens/",
+"publicado": "2026-11-21T21:00:44+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/ainda-tempo-ate-30-mil-pontos-azul-fidelidade-acesso-sala-vip-primeira-conversao-nomad/": {
+"titulo": "Ainda dá tempo! Até 30 mil pontos Azul Fidelidade + acesso à sala VIP na primeira conversão da Nomad",
+"descricao": "Ainda dá tempo de aproveitar a oferta especial da Nomad em parceria com o Azul Fidelidade. Ao abrir sua conta digital com o código PONTOS30VIP, você pode garantir até 30.000 pontos na primeira conversão de reais para dólares ou euros, além de ganhar um acesso à sala VIP. Promoção Nomad e Azul Fidelidade A seguir, confira a&#8230;",
+"link": "https://pontospravoar.com/ainda-tempo-ate-30-mil-pontos-azul-fidelidade-acesso-sala-vip-primeira-conversao-nomad/",
+"publicado": "2026-11-21T20:00:45+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/pontos-milhas-viagens-conheca-bate-papo-ppv/": {
+"titulo": "Pontos, milhas e viagens: conheça o Bate-Papo PPV",
+"descricao": "Se você gosta de viajar, acumular pontos e encontrar boas oportunidades, o Bate-Papo PPV é o espaço ideal para trocar experiências e aprender com outros viajantes. A comunidade é 100% gratuita e reúne pessoas interessadas em pontos, milhas e programas de fidelidade. Participe! Bate-papo PPV Para participar de nosso grupo gratuito de bate-papo, é muito&#8230;",
+"link": "https://pontospravoar.com/pontos-milhas-viagens-conheca-bate-papo-ppv/",
+"publicado": "2026-11-21T19:00:19+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://pontospravoar.com/sala-vip-amae-lounge-aeroporto-florianopolis/": {
+"titulo": "Sala VIP AMAE Lounge no Aeroporto de Florianópolis – Boa gastronomia e ambiente moderno",
+"descricao": "Visitamos a sala VIP AMAE Lounge do Aeroporto Internacional de Florianópolis e encontramos um espaço moderno, confortável e com uma oferta de alimentos e bebidas que nos surpreendeu positivamente. AMAE Lounge A sala VIP AMAE Lounge inaugurou recentemente sua operação no Aeroporto Internacional de Florianópolis e passou a ser mais uma alternativa para quem busca&#8230;",
+"link": "https://pontospravoar.com/sala-vip-amae-lounge-aeroporto-florianopolis/",
+"publicado": "2026-11-21T18:00:21+00:00",
+"fonte": "Pontos pra Voar"
+},
+"https://altarendablog.com.br/2026/11/24/black-friday-2026-5-dicas-para-combinar-descontos-pontos-e-investback/": {
+"titulo": "Black Friday 2026: 5 dicas para combinar descontos, pontos e Investback",
+"descricao": "<p>Compare o preço no Pix e no cartão, veja quando os benefícios podem ser somados e calcule quanto a compra [&#8230;]</p>\n<p>O post <a href=\"https://altarendablog.com.br/2026/11/24/black-friday-2026-5-dicas-para-combinar-descontos-pontos-e-investback/\">Black Friday 2026: 5 dicas para combinar descontos, pontos e Investback</a> apareceu primeiro em <a href=\"https://altarendablog.com.br\">ALTA RENDA BLOG</a>.</p>\n",
+"link": "https://altarendablog.com.br/2026/11/24/black-friday-2026-5-dicas-para-combinar-descontos-pontos-e-investback/",
+"publicado": "2026-11-24T20:41:26+00:00",
+"fonte": "Alta Renda"
+},
+"https://altarendablog.com.br/2026/11/24/inter-loop-para-azul-fidelidade-tem-ate-120-de-bonus-na-azul-friday/": {
+"titulo": "Inter Loop para Azul Fidelidade tem até 120% de bônus na Azul Friday",
+"descricao": "<p>A promoção vai de 24 a 25 de novembro de 2026. O bônus da campanha é de 60% para clientes [&#8230;]</p>\n<p>O post <a href=\"https://altarendablog.com.br/2026/11/24/inter-loop-para-azul-fidelidade-tem-ate-120-de-bonus-na-azul-friday/\">Inter Loop para Azul Fidelidade tem até 120% de bônus na Azul Friday</a> apareceu primeiro em <a href=\"https://altarendablog.com.br\">ALTA RENDA BLOG</a>.</p>\n",
+"link": "https://altarendablog.com.br/2026/11/24/inter-loop-para-azul-fidelidade-tem-ate-120-de-bonus-na-azul-friday/",
+"publicado": "2026-11-24T20:32:13+00:00",
+"fonte": "Alta Renda"
+},
+"https://altarendablog.com.br/2026/11/24/premmia-e-azul-dao-ate-120-de-bonus-e-milheiro-pode-sair-a-r-1532/": {
+"titulo": "Premmia e Azul dão até 120% de bônus e milheiro pode sair a R$ 15,32",
+"descricao": "<p>A promoção vai até 24 de novembro de 2026, ou enquanto houver estoque. Assinantes do Clube Azul recebem 120% de [&#8230;]</p>\n<p>O post <a href=\"https://altarendablog.com.br/2026/11/24/premmia-e-azul-dao-ate-120-de-bonus-e-milheiro-pode-sair-a-r-1532/\">Premmia e Azul dão até 120% de bônus e milheiro pode sair a R$ 15,32</a> apareceu primeiro em <a href=\"https://altarendablog.com.br\">ALTA RENDA BLOG</a>.</p>\n",
+"link": "https://altarendablog.com.br/2026/11/24/premmia-e-azul-dao-ate-120-de-bonus-e-milheiro-pode-sair-a-r-1532/",
+"publicado": "2026-11-24T20:28:39+00:00",
+"fonte": "Alta Renda"
+},
+"https://altarendablog.com.br/2026/11/24/black-decolar-faz-caca-ao-cupom-com-ate-r-1-mil-de-desconto-nos-parques-da-universal-orlando/": {
+"titulo": "Black Decolar faz caça ao cupom com até R$ 1 mil de desconto nos parques da Universal Orlando",
+"descricao": "<p>A live começa hoje, 24 de novembro, às 19h30, no Instagram da Decolar. A ação também terá cupons de R$ [&#8230;]</p>\n<p>O post <a href=\"https://altarendablog.com.br/2026/11/24/black-decolar-faz-caca-ao-cupom-com-ate-r-1-mil-de-desconto-nos-parques-da-universal-orlando/\">Black Decolar faz caça ao cupom com até R$ 1 mil de desconto nos parques da Universal Orlando</a> apareceu primeiro em <a href=\"https://altarendablog.com.br\">ALTA RENDA BLOG</a>.</p>\n",
+"link": "https://altarendablog.com.br/2026/11/24/black-decolar-faz-caca-ao-cupom-com-ate-r-1-mil-de-desconto-nos-parques-da-universal-orlando/",
+"publicado": "2026-11-24T20:07:39+00:00",
+"fonte": "Alta Renda"
+},
+"https://altarendablog.com.br/2026/11/24/itau-personnalite-agora-no-fasano-welcome-drink-early-check-in-massagem-de-50-minutos-e-3a-noite-gratis/": {
+"titulo": "Itaú Personnalité Agora no Fasano: welcome drink, early check-in, massagem de 50 minutos e 3ª noite grátis",
+"descricao": "<p>ALTA RENDA BLOG 2026 &#8211; Imagine chegar ao hotel e já ser recebido com um drink. Você entra mais cedo, [&#8230;]</p>\n<p>O post <a href=\"https://altarendablog.com.br/2026/11/24/itau-personnalite-agora-no-fasano-welcome-drink-early-check-in-massagem-de-50-minutos-e-3a-noite-gratis/\">Itaú Personnalité Agora no Fasano: welcome drink, early check-in, massagem de 50 minutos e 3ª noite grátis</a> apareceu primeiro em <a href=\"https://altarendablog.com.br\">ALTA RENDA BLOG</a>.</p>\n",
+"link": "https://altarendablog.com.br/2026/11/24/itau-personnalite-agora-no-fasano-welcome-drink-early-check-in-massagem-de-50-minutos-e-3a-noite-gratis/",
+"publicado": "2026-11-24T19:54:20+00:00",
+"fonte": "Alta Renda"
+},
+"https://altarendablog.com.br/2026/11/24/bradesco-tera-the-platinum-card-em-metal-com-ate-4-pontos-livelo-por-dolar-e-acesso-a-salas-vip/": {
+"titulo": "Bradesco terá The Platinum Card® em metal com até 4 pontos Livelo por dólar e acesso a salas VIP",
+"descricao": "<p>O novo American Express do Bradesco chega em 1º de dezembro de 2026, mediante convite, com pontos Livelo que não [&#8230;]</p>\n<p>O post <a href=\"https://altarendablog.com.br/2026/11/24/bradesco-tera-the-platinum-card-em-metal-com-ate-4-pontos-livelo-por-dolar-e-acesso-a-salas-vip/\">Bradesco terá The Platinum Card® em metal com até 4 pontos Livelo por dólar e acesso a salas VIP</a> apareceu primeiro em <a href=\"https://altarendablog.com.br\">ALTA RENDA BLOG</a>.</p>\n",
+"link": "https://altarendablog.com.br/2026/11/24/bradesco-tera-the-platinum-card-em-metal-com-ate-4-pontos-livelo-por-dolar-e-acesso-a-salas-vip/",
+"publicado": "2026-11-24T19:53:50+00:00",
+"fonte": "Alta Renda"
+},
+"https://altarendablog.com.br/2026/11/24/inter-ring-e-inter-wristband-aproveite-precos-beneficios-seguranca-e-como-ativar/": {
+"titulo": "Inter Ring e Inter Wristband: Aproveite preços, benefícios, segurança e como ativar",
+"descricao": "<p>ALTA RENDA BLOG 2026 – Sair para correr sem o celular, ir à praia sem carteira e pagar a conta [&#8230;]</p>\n<p>O post <a href=\"https://altarendablog.com.br/2026/11/24/inter-ring-e-inter-wristband-aproveite-precos-beneficios-seguranca-e-como-ativar/\">Inter Ring e Inter Wristband: Aproveite preços, benefícios, segurança e como ativar</a> apareceu primeiro em <a href=\"https://altarendablog.com.br\">ALTA RENDA BLOG</a>.</p>\n",
+"link": "https://altarendablog.com.br/2026/11/24/inter-ring-e-inter-wristband-aproveite-precos-beneficios-seguranca-e-como-ativar/",
+"publicado": "2026-11-24T19:22:04+00:00",
+"fonte": "Alta Renda"
+},
+"https://altarendablog.com.br/2026/11/24/black-friday-all-accor-2026-da-ate-4x-pontos-reward-em-reservas-pelo-app/": {
+"titulo": "Black Friday ALL Accor 2026 dá até 4x pontos Reward em reservas pelo app",
+"descricao": "<p>A Black Friday do ALL Accor tem uma oferta para quem já planeja se hospedar na rede em 2027. Reservas [&#8230;]</p>\n<p>O post <a href=\"https://altarendablog.com.br/2026/11/24/black-friday-all-accor-2026-da-ate-4x-pontos-reward-em-reservas-pelo-app/\">Black Friday ALL Accor 2026 dá até 4x pontos Reward em reservas pelo app</a> apareceu primeiro em <a href=\"https://altarendablog.com.br\">ALTA RENDA BLOG</a>.</p>\n",
+"link": "https://altarendablog.com.br/2026/11/24/black-friday-all-accor-2026-da-ate-4x-pontos-reward-em-reservas-pelo-app/",
+"publicado": "2026-11-24T15:43:24+00:00",
+"fonte": "Alta Renda"
+},
+"https://altarendablog.com.br/2026/11/24/nubank-lanca-nu-smart-invest-ferramenta-recomenda-investimentos-personalizados-para-o-seu-perfil/": {
+"titulo": "Nubank lança Nu Smart Invest: ferramenta recomenda investimentos personalizados para o seu perfil",
+"descricao": "<p>ALTA RENDA BLOG 2026 &#8211; Já imaginou ter um consultor olhando sua carteira e dizendo, sem rodeios, o que faz [&#8230;]</p>\n<p>O post <a href=\"https://altarendablog.com.br/2026/11/24/nubank-lanca-nu-smart-invest-ferramenta-recomenda-investimentos-personalizados-para-o-seu-perfil/\">Nubank lança Nu Smart Invest: ferramenta recomenda investimentos personalizados para o seu perfil</a> apareceu primeiro em <a href=\"https://altarendablog.com.br\">ALTA RENDA BLOG</a>.</p>\n",
+"link": "https://altarendablog.com.br/2026/11/24/nubank-lanca-nu-smart-invest-ferramenta-recomenda-investimentos-personalizados-para-o-seu-perfil/",
+"publicado": "2026-11-24T11:48:43+00:00",
+"fonte": "Alta Renda"
+},
+"https://altarendablog.com.br/2026/11/24/bradesco-revela-onde-resolver-cada-servico-do-banco-veja-o-mapa-completo-de-atendimento/": {
+"titulo": "Bradesco revela onde resolver cada serviço do banco: veja o mapa completo de atendimento",
+"descricao": "<p>ALTA RENDA BLOG 2026 &#8211; Bradesco libera mapa grátis que mostra onde resolver cada serviço do banco; veja o guia [&#8230;]</p>\n<p>O post <a href=\"https://altarendablog.com.br/2026/11/24/bradesco-revela-onde-resolver-cada-servico-do-banco-veja-o-mapa-completo-de-atendimento/\">Bradesco revela onde resolver cada serviço do banco: veja o mapa completo de atendimento</a> apareceu primeiro em <a href=\"https://altarendablog.com.br\">ALTA RENDA BLOG</a>.</p>\n",
+"link": "https://altarendablog.com.br/2026/11/24/bradesco-revela-onde-resolver-cada-servico-do-banco-veja-o-mapa-completo-de-atendimento/",
+"publicado": "2026-11-24T11:39:45+00:00",
+"fonte": "Alta Renda"
+},
+"https://altarendablog.com.br/2026/11/24/ma-noticia-cidadania-europeia-ficou-mais-dificil-em-2026-veja-quem-ainda-tem-direito-e-quanto-custa/": {
+"titulo": "Má notícia! Cidadania europeia ficou mais difícil em 2026; veja quem ainda tem direito e quanto custa",
+"descricao": "<p>ALTA RENDA BLOG 2026 – Ter um segundo passaporte deixou de ser assunto só de família com sobrenome italiano guardado [&#8230;]</p>\n<p>O post <a href=\"https://altarendablog.com.br/2026/11/24/ma-noticia-cidadania-europeia-ficou-mais-dificil-em-2026-veja-quem-ainda-tem-direito-e-quanto-custa/\">Má notícia! Cidadania europeia ficou mais difícil em 2026; veja quem ainda tem direito e quanto custa</a> apareceu primeiro em <a href=\"https://altarendablog.com.br\">ALTA RENDA BLOG</a>.</p>\n",
+"link": "https://altarendablog.com.br/2026/11/24/ma-noticia-cidadania-europeia-ficou-mais-dificil-em-2026-veja-quem-ainda-tem-direito-e-quanto-custa/",
+"publicado": "2026-11-24T11:17:55+00:00",
+"fonte": "Alta Renda"
+},
+"https://altarendablog.com.br/2026/11/24/wyndham-rewards-da-ate-100-de-bonus-na-compra-de-pontos-e-milheiro-sai-a-us-650/": {
+"titulo": "Wyndham Rewards dá até 100% de bônus na compra de pontos e milheiro sai a US$ 6,50",
+"descricao": "<p>O Wyndham Rewards está oferecendo até 100% de bônus na compra de pontos até 31 de dezembro de 2026. Para [&#8230;]</p>\n<p>O post <a href=\"https://altarendablog.com.br/2026/11/24/wyndham-rewards-da-ate-100-de-bonus-na-compra-de-pontos-e-milheiro-sai-a-us-650/\">Wyndham Rewards dá até 100% de bônus na compra de pontos e milheiro sai a US$ 6,50</a> apareceu primeiro em <a href=\"https://altarendablog.com.br\">ALTA RENDA BLOG</a>.</p>\n",
+"link": "https://altarendablog.com.br/2026/11/24/wyndham-rewards-da-ate-100-de-bonus-na-compra-de-pontos-e-milheiro-sai-a-us-650/",
+"publicado": "2026-11-24T05:52:12+00:00",
+"fonte": "Alta Renda"
+},
+"https://altarendablog.com.br/2026/11/24/wyndham-rewards-insider-da-status-platinum-e-7-500-pontos-por-us-95-ao-ano-vale-a-pena/": {
+"titulo": "Wyndham Rewards Insider dá status Platinum e 7.500 pontos por US$ 95 ao ano. Vale a pena?",
+"descricao": "<p>A Wyndham ampliou os benefícios do Wyndham Rewards Insider, sua assinatura anual para quem quer economizar em hotéis, acumular mais [&#8230;]</p>\n<p>O post <a href=\"https://altarendablog.com.br/2026/11/24/wyndham-rewards-insider-da-status-platinum-e-7-500-pontos-por-us-95-ao-ano-vale-a-pena/\">Wyndham Rewards Insider dá status Platinum e 7.500 pontos por US$ 95 ao ano. Vale a pena?</a> apareceu primeiro em <a href=\"https://altarendablog.com.br\">ALTA RENDA BLOG</a>.</p>\n",
+"link": "https://altarendablog.com.br/2026/11/24/wyndham-rewards-insider-da-status-platinum-e-7-500-pontos-por-us-95-ao-ano-vale-a-pena/",
+"publicado": "2026-11-24T05:39:05+00:00",
+"fonte": "Alta Renda"
+},
+"https://altarendablog.com.br/2026/11/24/black-friday-itin-2026-da-para-pedir-um-cartao-americano-morando-no-brasil/": {
+"titulo": "Black Friday ITIN 2026: dá para pedir um cartão americano morando no Brasil?",
+"descricao": "<p>Se você acompanha o Alta Renda e quer ter um cartão de crédito americano, provavelmente já ouviu falar do ITIN. [&#8230;]</p>\n<p>O post <a href=\"https://altarendablog.com.br/2026/11/24/black-friday-itin-2026-da-para-pedir-um-cartao-americano-morando-no-brasil/\">Black Friday ITIN 2026: dá para pedir um cartão americano morando no Brasil?</a> apareceu primeiro em <a href=\"https://altarendablog.com.br\">ALTA RENDA BLOG</a>.</p>\n",
+"link": "https://altarendablog.com.br/2026/11/24/black-friday-itin-2026-da-para-pedir-um-cartao-americano-morando-no-brasil/",
+"publicado": "2026-11-24T04:59:22+00:00",
+"fonte": "Alta Renda"
+},
+"https://altarendablog.com.br/2026/11/23/o-inter-liberou-18-meses-de-duo-gourmet-pelo-preco-de-12-e-o-bonus-de-verdade-e-o-cartao-prime/": {
+"titulo": "O Inter liberou 18 meses de Duo Gourmet pelo preço de 12, e o bônus de verdade é o cartão Prime",
+"descricao": "<p>ALTA RENDA BLOG 2026 &#8211; Sabe aquele jantar a dois que sempre pesa na fatura? Na Black Friday do Duo [&#8230;]</p>\n<p>O post <a href=\"https://altarendablog.com.br/2026/11/23/o-inter-liberou-18-meses-de-duo-gourmet-pelo-preco-de-12-e-o-bonus-de-verdade-e-o-cartao-prime/\">O Inter liberou 18 meses de Duo Gourmet pelo preço de 12, e o bônus de verdade é o cartão Prime</a> apareceu primeiro em <a href=\"https://altarendablog.com.br\">ALTA RENDA BLOG</a>.</p>\n",
+"link": "https://altarendablog.com.br/2026/11/23/o-inter-liberou-18-meses-de-duo-gourmet-pelo-preco-de-12-e-o-bonus-de-verdade-e-o-cartao-prime/",
+"publicado": "2026-11-23T22:01:14+00:00",
+"fonte": "Alta Renda"
+},
+"https://altarendablog.com.br/2026/11/23/bradesco-horizon-united-ou-marriott-compare-anuidade-pontuacao-salas-vip-e-bonus-dos-tres-cartoes/": {
+"titulo": "Bradesco Horizon, United ou Marriott? Compare anuidade, pontuação, salas VIP e bônus dos três cartões",
+"descricao": "<p>O Bradesco tem três cartões Visa Infinite para quem quer acumular diretamente em programas internacionais. O Horizon gera milhas United [&#8230;]</p>\n<p>O post <a href=\"https://altarendablog.com.br/2026/11/23/bradesco-horizon-united-ou-marriott-compare-anuidade-pontuacao-salas-vip-e-bonus-dos-tres-cartoes/\">Bradesco Horizon, United ou Marriott? Compare anuidade, pontuação, salas VIP e bônus dos três cartões</a> apareceu primeiro em <a href=\"https://altarendablog.com.br\">ALTA RENDA BLOG</a>.</p>\n",
+"link": "https://altarendablog.com.br/2026/11/23/bradesco-horizon-united-ou-marriott-compare-anuidade-pontuacao-salas-vip-e-bonus-dos-tres-cartoes/",
+"publicado": "2026-11-23T21:23:33+00:00",
+"fonte": "Alta Renda"
+},
+"https://altarendablog.com.br/2026/11/23/itau-uniclass-black-e-infinite-na-black-friday-2026-guia-de-pontos-salas-vip-e-anuidade-gratis/": {
+"titulo": "Itaú Uniclass Black e Infinite na Black Friday 2026: guia de pontos, salas VIP e anuidade grátis",
+"descricao": "<p>ALTA RENDA BLOG 2026 &#8211; A Black Friday chegou, e quem é cliente Itaú Uniclass tem um bom motivo para [&#8230;]</p>\n<p>O post <a href=\"https://altarendablog.com.br/2026/11/23/itau-uniclass-black-e-infinite-na-black-friday-2026-guia-de-pontos-salas-vip-e-anuidade-gratis/\">Itaú Uniclass Black e Infinite na Black Friday 2026: guia de pontos, salas VIP e anuidade grátis</a> apareceu primeiro em <a href=\"https://altarendablog.com.br\">ALTA RENDA BLOG</a>.</p>\n",
+"link": "https://altarendablog.com.br/2026/11/23/itau-uniclass-black-e-infinite-na-black-friday-2026-guia-de-pontos-salas-vip-e-anuidade-gratis/",
+"publicado": "2026-11-23T21:08:51+00:00",
+"fonte": "Alta Renda"
+},
+"https://altarendablog.com.br/2026/11/23/1-ano-de-garantia-gratis-na-black-friday-o-detalhe-do-seu-cartao-que-quase-ninguem-ativa/": {
+"titulo": "1 Ano de Garantia Grátis na Black Friday: o detalhe do seu cartão que quase ninguém ativa",
+"descricao": "<p>ALTA RENDA BLOG 2026 – Já pensou em comprar aquele celular ou notebook novo na Black Friday e ainda ganhar [&#8230;]</p>\n<p>O post <a href=\"https://altarendablog.com.br/2026/11/23/1-ano-de-garantia-gratis-na-black-friday-o-detalhe-do-seu-cartao-que-quase-ninguem-ativa/\">1 Ano de Garantia Grátis na Black Friday: o detalhe do seu cartão que quase ninguém ativa</a> apareceu primeiro em <a href=\"https://altarendablog.com.br\">ALTA RENDA BLOG</a>.</p>\n",
+"link": "https://altarendablog.com.br/2026/11/23/1-ano-de-garantia-gratis-na-black-friday-o-detalhe-do-seu-cartao-que-quase-ninguem-ativa/",
+"publicado": "2026-11-23T20:52:26+00:00",
+"fonte": "Alta Renda"
+},
+"https://altarendablog.com.br/2026/11/23/cvm-suspende-registro-do-brb-e-acoes-deixam-de-ser-negociadas-na-bolsa/": {
+"titulo": "CVM suspende registro do BRB e ações deixam de ser negociadas na Bolsa",
+"descricao": "<p>Banco de Brasília teve o registro de companhia aberta suspenso por atraso na entrega de informações obrigatórias. Entenda o que [&#8230;]</p>\n<p>O post <a href=\"https://altarendablog.com.br/2026/11/23/cvm-suspende-registro-do-brb-e-acoes-deixam-de-ser-negociadas-na-bolsa/\">CVM suspende registro do BRB e ações deixam de ser negociadas na Bolsa</a> apareceu primeiro em <a href=\"https://altarendablog.com.br\">ALTA RENDA BLOG</a>.</p>\n",
+"link": "https://altarendablog.com.br/2026/11/23/cvm-suspende-registro-do-brb-e-acoes-deixam-de-ser-negociadas-na-bolsa/",
+"publicado": "2026-11-23T18:01:16+00:00",
+"fonte": "Alta Renda"
+},
+"https://altarendablog.com.br/2026/11/23/livelo-no-carrinho-milheiro-smiles-sai-a-r-1590-com-80-de-bonus-e-pix/": {
+"titulo": "Livelo no carrinho: milheiro Smiles sai a R$ 15,90 com 80% de bônus e Pix",
+"descricao": "<p>A Orange Friday Smiles abriu uma oportunidade para quem quer completar o saldo de milhas usando pontos + dinheiro no [&#8230;]</p>\n<p>O post <a href=\"https://altarendablog.com.br/2026/11/23/livelo-no-carrinho-milheiro-smiles-sai-a-r-1590-com-80-de-bonus-e-pix/\">Livelo no carrinho: milheiro Smiles sai a R$ 15,90 com 80% de bônus e Pix</a> apareceu primeiro em <a href=\"https://altarendablog.com.br\">ALTA RENDA BLOG</a>.</p>\n",
+"link": "https://altarendablog.com.br/2026/11/23/livelo-no-carrinho-milheiro-smiles-sai-a-r-1590-com-80-de-bonus-e-pix/",
+"publicado": "2026-11-23T17:03:39+00:00",
+"fonte": "Alta Renda"
 }
 }
